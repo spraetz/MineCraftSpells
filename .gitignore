@@ -1,0 +1,10 @@
+# Ignore .class files for Java
+*.class
+
+# Ignore Maven generated files other than the .jar
+target/classes/*
+target/maven-archiver/*
+
+# Ignore Intellij Settings
+.idea/*
+MineCraftSpells.iml

@@ -1,0 +1,23 @@
+name: Engine
+version: 1.0.0-SNAPSHOT
+main: com.gmail.spraetz.plugin.Engine
+
+commands:
+  test:
+    description: Test command.
+    usage: /<command>
+    permission: test
+    permission-message: You don't have <permission>
+  charge:
+    description: Imbues a book with magic powers
+    usage: /<command> spell [charges]
+    permission: player
+    permission-message: You don't have <permission>
+
+permissions:
+  test:
+    description: Gives access to the test command.
+    default: true
+  player:
+    description: Default permission set for all players.
+    default: true

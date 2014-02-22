@@ -1,0 +1,43 @@
+# Default config.yml for Engine
+keen:
+  project_id: 5305558fd97b8560ca00000f
+  write_key: B98D4F3392827FA8046945C7767FCD0F
+
+spells:
+  explosion:
+    class: Explosion
+    reagents:
+      - reagent: GUNPOWDER
+        quantity: 1
+      - reagent: RED_ROSE
+        quantity: 1
+  fire_blast:
+    class: FireBlast
+    reagents:
+      - reagent: YELLOW_FLOWER
+        quantity: 1
+  lightning_bolt:
+    class: LightningBolt
+    reagents:
+      - reagent: INK_SACK
+        quantity: 1
+  teleport:
+    class: Teleport
+    reagents:
+      - reagent: ARROW
+        quantity: 1
+  stone_wall:
+    class: StoneWall
+    reagents:
+      - reagent: STONE
+        quantity: 8
+    settings:
+      height: 5
+      width: 4
+      minimum_ticks: 80
+      maximum_ticks: 120
+  heal_self:
+    class: HealSelf
+    reagents:
+      - reagent: DIAMOND
+        quantity: 1
