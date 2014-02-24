@@ -1,28 +1,24 @@
-MineCraftSpells
-===============
+# MineCraftSpells
 
 A spellcasting plugin for MineCraft servers using Bukkit
 
 MineCraftSpells is my first plugin. Please help me make it better!
 
-------------
-Player Guide
-------------
+## Player Guide
+
 
 If you're a player on a server using MineCraft Plugins, here's what you need to know:
 
-How do I cast spells?
----------------------
+### How do I cast spells?
+
 
 Once you obtained a spellbook, simply put it in your hand and right click! Depending on the spell you can't click too close to yourself because you might hurt yourself.
 
-How do I get a spellbook?
--------------------------
+### How do I get a spellbook?
 
 Great question! First off, you need a book. Then you need to collect items from the MineCraft world. Once you have those items, you put the book in your hand and use the /charge command to charge your spellbook.
 
-How does the charge command work?
----------------------------------
+### How does the charge command work?
 
 Simply type /charge spell_name [number_of_charges]
 
@@ -32,8 +28,7 @@ Simply type /charge spell_name [number_of_charges]
 
 If you have the right reagents for the spell, it'll remove them from your inventory and place charges on your book. Rad!
 
-What spells are there? and what materials are required?
--------------------------------------------------------
+### What spells are there? and what materials are required?
 
 Both are logical next questions. Here's the list of spells and their reagents so far:
 
@@ -46,9 +41,7 @@ Both are logical next questions. Here's the list of spells and their reagents so
 
 If you have any questions or ideas for new spells, let me know!
 
-------------------
-Server Admin Guide
-------------------
+## Server Admin Guide
 
 Don't like the default settings for spells? No worries! I made them all configurable.
 
