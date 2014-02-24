@@ -11,38 +11,26 @@
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.7.1</version>
                 <executions>
                     <execution>
-                        <id>simple-command</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>attached</goal>
+                            <goal>shade</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.4</version>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>package</phase>
                         <configuration>
-                            <tasks>
-                                <copy file="${project.basedir}/target/MineCraftSpells-1.0-jar-with-dependencies.jar" tofile="/Users/spraetz/dev/mcorpg/server/plugins/MineCraftSpells.jar"/>
-                            </tasks>
+                            <minimizeJar>true</minimizeJar>
+                            <artifactSet>
+                                <includes>
+                                    <include>*</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>org.bukkit:bukkit</exclude>
+                                </excludes>
+                            </artifactSet>
                         </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
