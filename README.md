@@ -24,7 +24,8 @@ Simply type /charge spell_name [number_of_charges]
 
 **Example: /charge fire_blast 10**
 
-"spell_name" is the name of the of the spell you'd like to place on the book. "number_of_charge" is an optional parameter that says how many charges you'd like to attempt to place on the book.
+* "spell_name" is the name of the of the spell you'd like to place on the book. 
+* "number_of_charge" is an optional parameter that says how many charges you'd like to attempt to place on the book.
 
 If you have the right reagents for the spell, it'll remove them from your inventory and place charges on your book. Rad!
 
