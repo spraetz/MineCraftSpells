@@ -1,7 +1,7 @@
 # Default config.yml for Engine
 keen:
-  project_id: 5305558fd97b8560ca00000f
-  write_key: B98D4F3392827FA8046945C7767FCD0F
+  project_id: 530a932c36bf5a2d23000000
+  write_key: ed91795fd2a7e88c5de09a31c982edf3c242b90cbdce6f5e375ec3200d1ee75d0efeba6597a277d51579dde3a61ceafc2a9e902925c18f6d9a410c4db78f388dcc2518f4ba48f9789ae5fea7f0ba2cce8f3b8999a8965d7f7148383d0184a497be09369d8cb6da315e3cd2ad01cc93fb
 
 spells:
   explosion:
