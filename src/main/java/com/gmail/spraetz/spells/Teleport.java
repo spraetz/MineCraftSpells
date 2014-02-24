@@ -1,6 +1,6 @@
 package com.gmail.spraetz.spells;
 
-import com.gmail.spraetz.plugin.Engine;
+import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.event.player.PlayerEvent;
@@ -12,12 +12,12 @@ import org.bukkit.event.player.PlayerTeleportEvent;
  */
 public class Teleport extends Spell {
 
-    public Teleport(PlayerInteractEvent event, Engine plugin){
+    public Teleport(PlayerInteractEvent event, MineCraftSpells plugin){
         super(event, plugin);
     }
 
     @Override
-    public void spellEffects(PlayerEvent e) {
+    public void spellEffects(PlayerEvent e, String spellName) {
 
         // Get the block the player is currently targeting.
         // Add 1 in the Y direction so they don't sink into the ground.

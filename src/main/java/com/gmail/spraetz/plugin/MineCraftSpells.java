@@ -7,14 +7,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * Created by spraetz on 2/16/14.
  */
-public class Engine extends JavaPlugin{
+public class MineCraftSpells extends JavaPlugin{
 
     public Analytics analytics;
 
     @Override
     public void onEnable() {
-        getLogger().info("Enabling MineCraftSpells");
-
         //Set up the config
         setupConfig();
 
@@ -26,11 +24,6 @@ public class Engine extends JavaPlugin{
 
         //Register Event Listeners
         registerEventListeners();
-    }
-
-    @Override
-    public void onDisable() {
-        getLogger().info("Disabling MineCraftSpells");
     }
 
     public void registerCommands(){

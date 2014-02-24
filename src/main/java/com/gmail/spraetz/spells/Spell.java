@@ -1,6 +1,6 @@
 package com.gmail.spraetz.spells;
 
-import com.gmail.spraetz.plugin.Engine;
+import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -8,7 +8,6 @@ import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,17 +17,17 @@ import java.util.List;
  */
 public abstract class Spell {
 
-    Engine plugin;
+    MineCraftSpells plugin;
     PlayerEvent event;
     Player player;
 
-    public Spell(PlayerEvent event, Engine plugin){
+    public Spell(PlayerEvent event, MineCraftSpells plugin){
         this.player = event.getPlayer();
         this.plugin = plugin;
         this.event = event;
     }
 
-    public static ItemStack[] getReagents(String spellName, Engine plugin){
+    public static ItemStack[] getReagents(String spellName, MineCraftSpells plugin){
         String settingName = "spells." + spellName + ".reagents";
 
         List reagents = plugin.getConfig().getList(settingName);
@@ -45,7 +44,7 @@ public abstract class Spell {
         return items;
     }
 
-    public boolean cast(){
+    public boolean cast(String spellName){
 
         PlayerInteractEvent e = (PlayerInteractEvent)event;
 
@@ -61,19 +60,22 @@ public abstract class Spell {
         Spellbook.setCharges(event.getPlayer().getItemInHand(), charges - 1);
 
         // Cause spell effects
-        spellEffects(event);
+        spellEffects(event, spellName);
+
+        // Record it!
+        plugin.analytics.trackSpellCast(e.getPlayer(), spellName);
 
         return true;
     }
 
-    public abstract void spellEffects(PlayerEvent event);
+    public abstract void spellEffects(PlayerEvent event, String spellName);
 
-    public void addMetadata(Entity object, Player caster, Engine plugin){
+    public void addMetadata(Entity object, Player caster, MineCraftSpells plugin){
         object.setMetadata("isSpell", new FixedMetadataValue(plugin, true));
         object.setMetadata("caster", new FixedMetadataValue(plugin, caster.getUniqueId()));
     }
 
-    public static Class getSpellClass(String spellName, Engine plugin){
+    public static Class getSpellClass(String spellName, MineCraftSpells plugin){
         try {
             return Class.forName("com.gmail.spraetz.spells." + plugin.getConfig().getString("spells." + spellName + ".class"));
         } catch (ClassNotFoundException e) {
@@ -85,7 +87,7 @@ public abstract class Spell {
         return null;
     }
 
-    public static boolean spellExists(String spellName, Engine plugin){
+    public static boolean spellExists(String spellName, MineCraftSpells plugin){
         return plugin.getConfig().getString("spells." + spellName + ".class", null) != null;
     }
 }

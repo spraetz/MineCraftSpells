@@ -13,9 +13,9 @@ import java.util.Map;
 public class Analytics {
 
     private final KeenClient client;
-    private final Engine plugin;
+    private final MineCraftSpells plugin;
 
-    public Analytics(Engine plugin){
+    public Analytics(MineCraftSpells plugin){
         this.plugin = plugin;
         String projectId = this.plugin.getConfig().getString("keen.project_id");
         String writeKey = this.plugin.getConfig().getString("keen.write_key");
@@ -31,7 +31,7 @@ public class Analytics {
         }
     }
 
-    public void trackLogin(Player p){
+    public void trackSpellCast(Player p, String spellName){
         HashMap<String, Object> properties = new HashMap<String, Object>();
 
         //Build player HashMap
@@ -40,12 +40,20 @@ public class Analytics {
 
         properties.put("player", playerProperties);
 
-        track("logins", properties);
+        //Build spell HashMap
+        HashMap<String, Object> spellProperties = new HashMap<String, Object>();
+        spellProperties.put("name", spellName.toLowerCase());
+        spellProperties.put("class", plugin.getConfig().getString("spells." + spellName + ".class"));
+
+        properties.put("spell", spellProperties);
+
+        track("spell_casts", properties);
     }
 
     private void track(String eventName, Map<String, Object> properties){
         if(client != null){
             try {
+                properties.put("server_id", plugin.getServer().getServerId());
                 client.addEvent(eventName, properties);
             } catch (KeenException e) {
                 e.printStackTrace();

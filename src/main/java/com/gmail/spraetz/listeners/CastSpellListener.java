@@ -1,13 +1,12 @@
 package com.gmail.spraetz.listeners;
 
-import com.gmail.spraetz.spells.*;
-import com.gmail.spraetz.plugin.Engine;
+import com.gmail.spraetz.plugin.MineCraftSpells;
+import com.gmail.spraetz.spells.Spell;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.lang.reflect.Constructor;
@@ -18,9 +17,9 @@ import java.lang.reflect.Method;
  */
 public class CastSpellListener implements Listener {
 
-    Engine plugin;
+    MineCraftSpells plugin;
 
-    public CastSpellListener(Engine plugin){
+    public CastSpellListener(MineCraftSpells plugin){
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -38,10 +37,10 @@ public class CastSpellListener implements Listener {
 
                 Class spellClass = Spell.getSpellClass(displayName, plugin);
                 try{
-                    Constructor constructor = spellClass.getConstructor(new Class[]{PlayerInteractEvent.class, Engine.class});
+                    Constructor constructor = spellClass.getConstructor(new Class[]{PlayerInteractEvent.class, MineCraftSpells.class});
                     Object obj = constructor.newInstance(event, plugin);
-                    Method method = obj.getClass().getMethod("cast");
-                    method.invoke(obj);
+                    Method method = obj.getClass().getMethod("cast", String.class);
+                    method.invoke(obj, displayName);
                 }
                 catch(Exception e){
                     e.printStackTrace();

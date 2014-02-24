@@ -7,25 +7,27 @@ spells:
   explosion:
     class: Explosion
     reagents:
-      - reagent: GUNPOWDER
-        quantity: 1
-      - reagent: RED_ROSE
-        quantity: 1
+      - reagent: SULPHUR
+        quantity: 2
+    settings:
+      radius: 3
   fire_blast:
     class: FireBlast
     reagents:
-      - reagent: YELLOW_FLOWER
-        quantity: 1
+      - reagent: FLINT_AND_STEEL
+        quantity: 2
+    settings:
+      radius: 1
   lightning_bolt:
     class: LightningBolt
     reagents:
-      - reagent: INK_SACK
+      - reagent: GOLD_INGOT
         quantity: 1
   teleport:
     class: Teleport
     reagents:
-      - reagent: ARROW
-        quantity: 1
+      - reagent: REDSTONE_DUST
+        quantity: 3
   stone_wall:
     class: StoneWall
     reagents:
@@ -41,3 +43,5 @@ spells:
     reagents:
       - reagent: DIAMOND
         quantity: 1
+    settings:
+      percent_of_max_health: 30

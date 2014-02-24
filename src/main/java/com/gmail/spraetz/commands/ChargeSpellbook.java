@@ -1,6 +1,6 @@
 package com.gmail.spraetz.commands;
 
-import com.gmail.spraetz.plugin.Engine;
+import com.gmail.spraetz.plugin.MineCraftSpells;
 import com.gmail.spraetz.spells.Spell;
 import com.gmail.spraetz.spells.Spellbook;
 import org.bukkit.Material;
@@ -9,20 +9,15 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 /**
  * Created by spraetz on 2/17/14.
  */
 public class ChargeSpellbook implements CommandExecutor {
 
-    private final Engine plugin;
+    private final MineCraftSpells plugin;
 
-    public ChargeSpellbook(Engine plugin){
+    public ChargeSpellbook(MineCraftSpells plugin){
         this.plugin = plugin;
     }
 

@@ -1,6 +1,6 @@
 package com.gmail.spraetz.spells;
 
-import com.gmail.spraetz.plugin.Engine;
+import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -15,17 +15,17 @@ import java.util.Random;
  */
 public class StoneWall extends Spell {
 
-    public StoneWall(PlayerInteractEvent event, Engine plugin){
+    public StoneWall(PlayerInteractEvent event, MineCraftSpells plugin){
         super(event, plugin);
     }
 
     @Override
-    public void spellEffects(PlayerEvent event) {
+    public void spellEffects(PlayerEvent event, String spellName) {
 
         PlayerInteractEvent e = (PlayerInteractEvent)event;
 
         //Get width of wall
-        Integer width = plugin.getConfig().getInt("spells.stone_wall.settings.width");
+        Integer width = plugin.getConfig().getInt("spells." + spellName + ".settings.width");
 
         //Get the block the player clicked.
         Block b = event.getPlayer().getTargetBlock(null, 20);
@@ -131,10 +131,10 @@ public class StoneWall extends Spell {
      */
     private class BedRockRemover extends BukkitRunnable {
 
-        private final Engine plugin;
+        private final MineCraftSpells plugin;
         private final Block block;
 
-        BedRockRemover(Block block, Engine plugin){
+        BedRockRemover(Block block, MineCraftSpells plugin){
             this.plugin = plugin;
             this.block = block;
         }
