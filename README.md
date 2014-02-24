@@ -44,8 +44,20 @@ If you have any questions or ideas for new spells, let me know!
 
 ## Server Admin Guide
 
+Are you a server admin and want to use MineCraftSpells?  This is for you!
+
+### Installation
+
+Copy the MineCraftSpells-1.0.jar from /target to your /plugins directory in your server.
+
+Retart the server and you should be good to go!
+
+### Configuration
+
 Don't like the default settings for spells? No worries! I made them all configurable.
 
-If you look at plugins/MineCraftSpells-1.0/config.yml, you'll be able to tweak the spell settings and reagents!
+After you've started the plugin at least once, if you look at plugins/MineCraftSpells-1.0/config.yml, you'll be able to tweak the spell settings and reagents!
+
+Once you save the file with your changes, simply reload the server and you're good to go!
 
 Happy spellcasting!
