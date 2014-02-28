@@ -8,9 +8,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 /**
  * Created by spraetz on 2/16/14.
  */
-public class FireBlast extends Spell {
+public class FireBall extends Spell {
 
-    public FireBlast(PlayerInteractEvent event, MineCraftSpells plugin){
+    public FireBall(PlayerInteractEvent event, MineCraftSpells plugin){
         super(event, plugin);
     }
 
@@ -18,18 +18,18 @@ public class FireBlast extends Spell {
     public void spellEffects(PlayerEvent event, String spellName) {
 
         //Spawn a new fireball at the next tick at the player's current location.
-        Fireball fireblast = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
+        Fireball fireball = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
 
-        //Fireblasts set stuff on fire.
-        fireblast.setIsIncendiary(true);
+        //fireballs set stuff on fire.
+        fireball.setIsIncendiary(true);
 
         //Set the radius (yield)
-        fireblast.setYield(plugin.getConfig().getInt("spells." + spellName + ".settings.radius"));
+        fireball.setYield(plugin.getConfig().getInt("spells." + spellName + ".settings.radius"));
 
         //Set the shooter to be the current player.
-        fireblast.setShooter(player);
+        fireball.setShooter(player);
 
         //Add metadata to the fireball so we know what it is and where it is going.
-        addMetadata(fireblast, player, plugin);
+        addMetadata(fireball, player, plugin);
     }
 }

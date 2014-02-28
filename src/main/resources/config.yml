@@ -5,21 +5,21 @@ keen:
 
 spells:
   explosion:
-    class: Explosion
+    class: com.gmail.spraetz.spells.Explosion
     reagents:
       - reagent: SULPHUR
         quantity: 2
     settings:
       radius: 3
-  fire_blast:
-    class: FireBlast
+  fire_ball:
+    class: com.gmail.spraetz.spells.FireBall
     reagents:
       - reagent: FLINT_AND_STEEL
         quantity: 2
     settings:
       radius: 1
   lightning_bolt:
-    class: LightningBolt
+    class: com.gmail.spraetz.spells.LightningBolt
     reagents:
       - reagent: GOLD_INGOT
         quantity: 1
@@ -29,7 +29,7 @@ spells:
       - reagent: REDSTONE_DUST
         quantity: 3
   stone_wall:
-    class: StoneWall
+    class: com.gmail.spraetz.spells.StoneWall
     reagents:
       - reagent: STONE
         quantity: 8
@@ -39,7 +39,7 @@ spells:
       minimum_ticks: 80
       maximum_ticks: 120
   heal_self:
-    class: HealSelf
+    class: com.gmail.spraetz.spells.HealSelf
     reagents:
       - reagent: DIAMOND
         quantity: 1

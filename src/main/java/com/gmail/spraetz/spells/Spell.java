@@ -77,7 +77,7 @@ public abstract class Spell {
 
     public static Class getSpellClass(String spellName, MineCraftSpells plugin){
         try {
-            return Class.forName("com.gmail.spraetz.spells." + plugin.getConfig().getString("spells." + spellName + ".class"));
+            return Class.forName(plugin.getConfig().getString("spells." + spellName + ".class"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

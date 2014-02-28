@@ -34,6 +34,24 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <tasks>
+                                <copy file="/Users/spraetz/dev/MineCraftSpells/target/MineCraftSpells-1.0.jar" tofile="/Users/spraetz/MineCraft/MineCraftSpells/plugins/MineCraftSpells-1.0.jar"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
