@@ -75,6 +75,30 @@ public class Spellbook {
         setCharges(spellbook, spellName, currentCharges + numberToAdd);
     }
 
+    public static void rotateSpells(ItemStack spellbook){
+        ItemMeta itemMeta = spellbook.getItemMeta();
+        String currentSpell = itemMeta.getDisplayName();
+
+        //Find where the current spell is in the list of spells on it.
+        ArrayList<String> spells = (ArrayList<String>)itemMeta.getLore();
+        Integer location = spells.indexOf(currentSpell);
+
+        Integer newLocation = 0;
+
+        if(location != -1){
+            if(location == spells.size()-1){
+                newLocation = 0;
+            }
+            else if(location < spells.size()-1){
+                newLocation++;
+            }
+        }
+
+        itemMeta.setDisplayName(spells.get(newLocation));
+        spellbook.setItemMeta(itemMeta);
+
+    }
+
     public static void setSpell(ItemStack spellbook, String spellName){
         ItemMeta itemMeta = spellbook.getItemMeta();
         itemMeta.setDisplayName(spellName);

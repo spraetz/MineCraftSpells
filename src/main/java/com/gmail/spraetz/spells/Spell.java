@@ -49,18 +49,19 @@ public abstract class Spell {
         PlayerInteractEvent e = (PlayerInteractEvent)event;
 
         // Check if there are charges on the spellbook
-        Integer charges = Spellbook.getCharges(event.getPlayer().getItemInHand());
+        Integer charges = Spellbook.getCharges(event.getPlayer().getItemInHand(), spellName);
 
-        // Remove one charge
+        // See if we have charges.
         if(charges == 0){
-            player.sendMessage("Your spellbook is out of charges!");
+            player.sendMessage("Your spellbook is out of charges for " + spellName + "!");
             return false;
         }
 
-        Spellbook.setCharges(event.getPlayer().getItemInHand(), charges - 1);
-
         // Cause spell effects
         spellEffects(event, spellName);
+
+        // Remove a charge
+        Spellbook.setCharges(event.getPlayer().getItemInHand(), spellName, charges - 1);
 
         // Record it!
         plugin.analytics.trackSpellCast(e.getPlayer(), spellName);

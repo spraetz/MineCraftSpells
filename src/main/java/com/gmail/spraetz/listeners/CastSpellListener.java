@@ -2,6 +2,7 @@ package com.gmail.spraetz.listeners;
 
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import com.gmail.spraetz.spells.Spell;
+import com.gmail.spraetz.spells.Spellbook;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -28,7 +29,8 @@ public class CastSpellListener implements Listener {
     public void castSpell(PlayerInteractEvent event) {
 
         // Check if they have a spellbook in their hand.
-        if(event.getPlayer().getItemInHand().getType() == Material.BOOK && event.getAction() == Action.RIGHT_CLICK_AIR){
+        if(Spellbook.isSpellbook(event.getPlayer().getItemInHand(), plugin) &&
+                (event.getAction() == Action.LEFT_CLICK_AIR)){
 
             // See if the display name matches the name of a spell.
             String displayName = event.getPlayer().getItemInHand().getItemMeta().getDisplayName();
