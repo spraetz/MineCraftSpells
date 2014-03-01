@@ -121,7 +121,20 @@ public class Spellbook {
         ItemMeta itemMeta = book.getItemMeta();
         ArrayList<String> loreList = (ArrayList<String>)itemMeta.getLore();
 
+        if(loreList == null){
+            return true;
+        }
+
+        boolean found = false;
+        //See if the loreList contains our spell.
+        for(int i=0; i<loreList.size(); i++){
+            if(loreList.get(i).split(LORE_STRING_SEPARATOR)[0].equalsIgnoreCase(spellName)){
+                found = true;
+            }
+        }
+
         //If we already have max number of spells per book and we don't already have the spell in question...
-        return loreList == null || !(loreList.size() >= MAX_NUMBER_OF_SPELLS_PER_BOOK && !loreList.contains(spellName));
+        return (loreList.size() < MAX_NUMBER_OF_SPELLS_PER_BOOK) ||
+                (loreList.size() == MAX_NUMBER_OF_SPELLS_PER_BOOK && found);
     }
 }

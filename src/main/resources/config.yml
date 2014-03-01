@@ -24,9 +24,9 @@ spells:
       - reagent: GOLD_INGOT
         quantity: 1
   teleport:
-    class: Teleport
+    class: com.gmail.spraetz.spells.Teleport
     reagents:
-      - reagent: REDSTONE_DUST
+      - reagent: REDSTONE
         quantity: 3
   stone_wall:
     class: com.gmail.spraetz.spells.StoneWall
