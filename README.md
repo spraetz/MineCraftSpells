@@ -6,13 +6,11 @@ MineCraftSpells is my first plugin. Please help me make it better!
 
 ## Player Guide
 
-
 If you're a player on a server using MineCraft Plugins, here's what you need to know:
 
 ### How do I cast spells?
 
-
-Once you obtained a spellbook, simply put it in your hand and right click! Depending on the spell you can't click too close to yourself because you might hurt yourself.
+Once you obtained a spellbook, simply put it in your hand and left click! Depending on the spell you can't click too close to yourself because you might hurt yourself.  If your spellbook has more than one spell on it, right click will swap between the spells.  
 
 ### How do I get a spellbook?
 
@@ -20,9 +18,7 @@ Great question! First off, you need a book. Then you need to collect items from 
 
 ### How does the charge command work?
 
-Simply type /charge spell_name [number_of_charges]
-
-**Example: /charge fire_blast 10**
+Simply type /charge spell_name [number_of_charges]  **Example: /charge fire_blast 10**
 
 * "spell_name" is the name of the of the spell you'd like to place on the book. 
 * "number_of_charge" is an optional parameter that says how many charges you'd like to attempt to place on the book.
@@ -33,8 +29,8 @@ If you have the right reagents for the spell, it'll remove them from your invent
 
 Both are logical next questions. Here's the list of spells and their reagents so far:
 
-* explosion: 2 gunpowder - shoots a fireball that explodes with a large radius.
-* fire_blast: 2 flint and steel - shoots a fireball that explodes with a small radius and sets stuff on fire.
+* explosion: 2 gunpowder - shoots a ball that explodes with a large radius.
+* fire_ball: 2 flint and steel - shoots a fireball that explodes with a small radius and sets stuff on fire.
 * lightning_bolt: 1 gold ingot - causes a lightning bolt to strike where you're pointing
 * teleport: 3 redstone dust - teleports you to the location you click.
 * stone_wall: 8 stone blocks - creates a temporary wall out of bedrock
@@ -48,7 +44,7 @@ Are you a server admin and want to use MineCraftSpells?  This is for you!
 
 ### Installation
 
-Copy the MineCraftSpells-1.0.jar from /target to your /plugins directory in your server.
+Copy the MineCraftSpells-2.0.jar from /target to your /plugins directory in your server.
 
 Retart the server and you should be good to go!
 
@@ -56,8 +52,12 @@ Retart the server and you should be good to go!
 
 Don't like the default settings for spells? No worries! I made them all configurable.
 
-After you've started the plugin at least once, if you look at plugins/MineCraftSpells-1.0/config.yml, you'll be able to tweak the spell settings and reagents!
+After you've started the plugin at least once, if you look at plugins/MineCraftSpells/config.yml, you'll be able to tweak the spell settings and reagents!
 
 Once you save the file with your changes, simply reload the server and you're good to go!
+
+### Adding your own spells
+
+If you'd like to add your own spells, simply implement the Spell interface in com.gmail.spraetz.spells and update your config.yml with the settings for your spells.
 
 Happy spellcasting!
