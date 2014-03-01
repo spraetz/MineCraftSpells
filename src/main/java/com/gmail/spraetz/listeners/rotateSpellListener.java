@@ -12,10 +12,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 /**
  * Created by spraetz on 3/1/14.
  */
-public class rotateSpellListener implements Listener {
+public class RotateSpellListener implements Listener {
     MineCraftSpells plugin;
 
-    public rotateSpellListener(MineCraftSpells plugin){
+    public RotateSpellListener(MineCraftSpells plugin){
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -28,6 +28,7 @@ public class rotateSpellListener implements Listener {
 
             if(Spellbook.isSpellbook(event.getPlayer().getItemInHand(), plugin)){
                 Spellbook.rotateSpells(event.getPlayer().getItemInHand());
+                event.getPlayer().sendMessage("Now casting " + event.getPlayer().getItemInHand().getItemMeta().getDisplayName());
             }
         }
     }

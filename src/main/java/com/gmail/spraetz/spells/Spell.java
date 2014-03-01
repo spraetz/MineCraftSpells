@@ -51,6 +51,8 @@ public abstract class Spell {
         // Check if there are charges on the spellbook
         Integer charges = Spellbook.getCharges(event.getPlayer().getItemInHand(), spellName);
 
+        System.out.println("charges: " + charges);
+
         // See if we have charges.
         if(charges == 0){
             player.sendMessage("Your spellbook is out of charges for " + spellName + "!");
@@ -80,10 +82,10 @@ public abstract class Spell {
         try {
             return Class.forName(plugin.getConfig().getString("spells." + spellName + ".class"));
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         catch(NullPointerException npe){
-            npe.printStackTrace();
+            //npe.printStackTrace();
         }
         return null;
     }

@@ -50,17 +50,23 @@ public class Spellbook {
 
         //If lore is empty, easy to add.
         if(loreList == null || loreList.size() == 0){
+            System.out.println("in if");
             loreList = new ArrayList<String>();
             loreList.add(chargeString(spellName, numberOfCharges));
-            setSpell(spellbook, spellName);
+            itemMeta.setDisplayName(spellName);
         }
-        //otherwise we need to iterate through it
         else{
+            boolean found = false;
+            //otherwise we need to iterate through it and see if we already have it.
             for(int i = 0; i < loreList.size(); i++){
                 String[] loreParts = loreList.get(i).split(LORE_STRING_SEPARATOR);
                 if(loreParts[0].equalsIgnoreCase(spellName)){
-                    loreList.set(i, spellName + LORE_STRING_SEPARATOR + (numberOfCharges + Integer.parseInt(loreParts[1])));
+                    loreList.set(i, spellName + LORE_STRING_SEPARATOR + numberOfCharges);
+                    found = true;
                 }
+            }
+            if(!found){
+                loreList.add(spellName + LORE_STRING_SEPARATOR + numberOfCharges);
             }
         }
         itemMeta.setLore(loreList);
@@ -81,32 +87,29 @@ public class Spellbook {
 
         //Find where the current spell is in the list of spells on it.
         ArrayList<String> spells = (ArrayList<String>)itemMeta.getLore();
-        Integer location = spells.indexOf(currentSpell);
+        Integer currentSpellLocation = null;
+        for (int i=0; i < spells.size(); i++){
+            if(spells.get(i).split(LORE_STRING_SEPARATOR)[0].equals(currentSpell)){
 
-        Integer newLocation = 0;
+                currentSpellLocation = i;
 
-        if(location != -1){
-            if(location == spells.size()-1){
-                newLocation = 0;
-            }
-            else if(location < spells.size()-1){
-                newLocation++;
+                // Find the max location
+                Integer maxLocation = spells.size() - 1;
+
+                // Determine the new location (wrap around if needed)
+                Integer newLocation;
+                if(currentSpellLocation.equals(maxLocation)){
+                    newLocation = 0;
+                }
+                else{
+                    newLocation = currentSpellLocation + 1;
+                }
+
+                // Set the new display name.
+                itemMeta.setDisplayName(spells.get(newLocation).split(LORE_STRING_SEPARATOR)[0]);
+                spellbook.setItemMeta(itemMeta);
             }
         }
-
-        itemMeta.setDisplayName(spells.get(newLocation));
-        spellbook.setItemMeta(itemMeta);
-
-    }
-
-    public static void setSpell(ItemStack spellbook, String spellName){
-        ItemMeta itemMeta = spellbook.getItemMeta();
-        itemMeta.setDisplayName(spellName);
-        spellbook.setItemMeta(itemMeta);
-    }
-
-    public static String getSpell(ItemStack spellbook){
-        return spellbook.getItemMeta().getDisplayName();
     }
 
     public static boolean isSpellbook(ItemStack book, MineCraftSpells plugin){
@@ -119,6 +122,6 @@ public class Spellbook {
         ArrayList<String> loreList = (ArrayList<String>)itemMeta.getLore();
 
         //If we already have max number of spells per book and we don't already have the spell in question...
-        return !(loreList.size() >= MAX_NUMBER_OF_SPELLS_PER_BOOK && !loreList.contains(spellName));
+        return loreList == null || !(loreList.size() >= MAX_NUMBER_OF_SPELLS_PER_BOOK && !loreList.contains(spellName));
     }
 }

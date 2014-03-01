@@ -41,9 +41,10 @@ public class ChargeSpellbook implements CommandExecutor {
             //Get the number of charges they'd like to put on the book.
             Integer chargesToAdd = getNumberOfCharges(args);
 
-            //Get the name of the spell and spell class
+            plugin.getLogger().info("chargesToAdd: " + chargesToAdd);
+
+            //Get the name of the spell
             String spellName = args[0];
-            Class spellClass = getSpellClass(spellName);
 
             validateItem(book, spellName);
 
@@ -56,8 +57,12 @@ public class ChargeSpellbook implements CommandExecutor {
             //See how many charges the book has already for that spell.
             Integer currentCharges = Spellbook.getCharges(book, spellName);
 
+            plugin.getLogger().info("currentCharges: " + currentCharges);
+
             //Find how many charges we CAN add.
             chargesToAdd = getChargesToAdd(currentCharges, chargesToAdd, reagents, reagentCounts);
+
+            plugin.getLogger().info("2nd ChargesToAdd: " + chargesToAdd);
 
             //Remove them from inventory
             removeReagentsFromInventory(p, reagents, chargesToAdd);
