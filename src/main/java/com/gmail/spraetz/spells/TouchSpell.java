@@ -1,35 +1,27 @@
 package com.gmail.spraetz.spells;
 
 import com.gmail.spraetz.plugin.MineCraftSpells;
-import org.bukkit.Material;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.metadata.FixedMetadataValue;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
- * Created by spraetz on 2/16/14.
+ * Created by spraetz on 3/1/14.
  */
-public abstract class Spell {
+public abstract class TouchSpell {
 
     MineCraftSpells plugin;
-    PlayerEvent event;
+    EntityDamageByEntityEvent event;
     Player player;
 
-    public Spell(PlayerEvent event, MineCraftSpells plugin){
-        this.player = event.getPlayer();
+    public TouchSpell(EntityDamageByEntityEvent event, MineCraftSpells plugin){
+        this.player = (Player)event.getDamager();
         this.plugin = plugin;
         this.event = event;
     }
 
     public boolean cast(String spellName){
-
-        PlayerInteractEvent e = (PlayerInteractEvent)event;
 
         // Check if there are charges on the spellbook
         Integer charges = Spellbook.getCharges(player.getItemInHand(), spellName);
@@ -52,11 +44,7 @@ public abstract class Spell {
         return true;
     }
 
-    public abstract void spellEffects(PlayerEvent event, String spellName);
+    public void spellEffects(EntityDamageByEntityEvent event, String spellName) {
 
-    public void addMetadata(Entity object, Player caster, MineCraftSpells plugin){
-        object.setMetadata("isSpell", new FixedMetadataValue(plugin, true));
-        object.setMetadata("caster", new FixedMetadataValue(plugin, caster.getUniqueId()));
     }
-
 }

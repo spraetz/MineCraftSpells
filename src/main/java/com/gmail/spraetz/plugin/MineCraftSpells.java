@@ -2,6 +2,7 @@ package com.gmail.spraetz.plugin;
 
 import com.gmail.spraetz.commands.ChargeSpellbook;
 import com.gmail.spraetz.listeners.CastSpellListener;
+import com.gmail.spraetz.listeners.CastTouchSpellListener;
 import com.gmail.spraetz.listeners.RotateSpellListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,6 +35,7 @@ public class MineCraftSpells extends JavaPlugin{
     public void registerEventListeners(){
         new CastSpellListener(this);
         new RotateSpellListener(this);
+        new CastTouchSpellListener(this);
     }
 
     public void setupConfig(){

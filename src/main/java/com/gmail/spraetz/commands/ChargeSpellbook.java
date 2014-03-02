@@ -47,7 +47,7 @@ public class ChargeSpellbook implements CommandExecutor {
             validateItem(book, spellName);
 
             //Find the reagent for that spell
-            ItemStack[] reagents = Spell.getReagents(spellName, plugin);
+            ItemStack[] reagents = Spellbook.getReagents(spellName, plugin);
 
             //See how many we have in our inventory
             Integer[] reagentCounts = getReagentCounts(reagents, p);
@@ -151,7 +151,7 @@ public class ChargeSpellbook implements CommandExecutor {
     }
 
     private Class<Spell> getSpellClass(String spellName) throws ChargeSpellException {
-        Class spellClass = Spell.getSpellClass(spellName, plugin);
+        Class spellClass = Spellbook.getSpellClass(spellName, plugin);
         if(spellClass == null){
             throw new ChargeSpellException("There is no spell by that name: " + spellName);
         }

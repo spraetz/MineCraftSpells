@@ -45,3 +45,12 @@ spells:
         quantity: 1
     settings:
       percent_of_max_health: 30
+  heal_other:
+    class: com.gmail.spraetz.spells.HealOther
+    reagents:
+      - reagent: SPECKLED_MELON
+        quantity: 1
+      - reagent: GLOWSTONE_DUST
+        quantity: 1
+    settings:
+      percent_of_max_health: 30
