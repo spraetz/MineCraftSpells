@@ -2,6 +2,7 @@ package com.gmail.spraetz.spells;
 
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -171,6 +172,13 @@ public class Spellbook {
     }
 
     public static boolean spellExists(String spellName, MineCraftSpells plugin){
-        return plugin.getConfig().getString("spells." + spellName + ".class", null) != null;
+
+        FileConfiguration fileConfiguration = plugin.getConfig();
+
+        String spell = fileConfiguration.getString("spells." + spellName + ".class", null);
+
+        boolean result = spell != null;
+
+        return result;
     }
 }

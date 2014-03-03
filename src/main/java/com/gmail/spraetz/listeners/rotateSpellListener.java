@@ -17,7 +17,6 @@ public class RotateSpellListener implements Listener {
 
     public RotateSpellListener(MineCraftSpells plugin){
         this.plugin = plugin;
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler(priority = EventPriority.HIGH)

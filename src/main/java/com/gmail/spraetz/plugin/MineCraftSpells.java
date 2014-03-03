@@ -33,9 +33,9 @@ public class MineCraftSpells extends JavaPlugin{
     }
 
     public void registerEventListeners(){
-        new CastSpellListener(this);
-        new RotateSpellListener(this);
-        new CastTouchSpellListener(this);
+        this.getServer().getPluginManager().registerEvents(new CastSpellListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new RotateSpellListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new CastTouchSpellListener(this), this);
     }
 
     public void setupConfig(){
