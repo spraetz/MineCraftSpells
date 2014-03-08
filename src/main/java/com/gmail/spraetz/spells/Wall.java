@@ -13,9 +13,9 @@ import java.util.Random;
 /**
  * Created by spraetz on 2/17/14.
  */
-public class StoneWall extends Spell {
+public class Wall extends Spell {
 
-    public StoneWall(PlayerInteractEvent event, MineCraftSpells plugin){
+    public Wall(PlayerInteractEvent event, MineCraftSpells plugin){
         super(event, plugin);
     }
 
@@ -45,7 +45,7 @@ public class StoneWall extends Spell {
         Double z2 = wallMiddle.getZ() - ((width) * (slope / Math.sqrt(1+Math.pow(slope, 2))));
 
         draw((int)Math.round(x1), (int)Math.round(z1),
-                (int)Math.round(x2), (int)Math.round(z2),  wallMiddle.getBlockY(), e);
+                (int)Math.round(x2), (int)Math.round(z2),  wallMiddle.getBlockY(), e, spellName);
 
     }
 
@@ -53,7 +53,7 @@ public class StoneWall extends Spell {
      *  I stole the shit out of this from this URL:
      *  http://groups.csail.mit.edu/graphics/classes/6.837/F99/grading/asst2/turnin/rdror/Bresenham.java
      */
-    private void draw(int x1, int z1, int x2, int z2, int y, PlayerInteractEvent event){
+    private void draw(int x1, int z1, int x2, int z2, int y, PlayerInteractEvent event, String spellName){
         boolean xz_swap = false;
         if (Math.abs(z2 - z1) > Math.abs(x2 - x1)) {
             xz_swap = true;
@@ -84,8 +84,8 @@ public class StoneWall extends Spell {
 
         for (x = x1; x < x2; x++) {
             if (xz_swap)
-                setColumn(z, y, x, event);
-            else setColumn(x, y, z, event);
+                setColumn(z, y, x, event, spellName);
+            else setColumn(x, y, z, event, spellName);
 
             e += m_num;
 
@@ -104,21 +104,23 @@ public class StoneWall extends Spell {
         }
 
         if (xz_swap)
-            setColumn(z, y, x, event);
-        else setColumn(x, y, z, event);
+            setColumn(z, y, x, event, spellName);
+        else setColumn(x, y, z, event, spellName);
 
     }
     
-    private void setColumn(int x, int y, int z, PlayerInteractEvent event){
+    private void setColumn(int x, int y, int z, PlayerInteractEvent event, String spellName){
 
-        Integer height = plugin.getConfig().getInt("spells.stone_wall.settings.height");
+        Integer height = plugin.getConfig().getInt("spells." + spellName + ".settings.height");
+        Material wallMaterial = Material.getMaterial(plugin.getConfig().getString("spells." + spellName + ".settings.material"));
+
 
         for (int i = y-(height/2)+1; i <= y+(height/2)+1; i++){
 
             Block block = event.getPlayer().getWorld().getBlockAt(x, i, z);
             if(block.getType() == Material.AIR){
-                block.setType(Material.BEDROCK);
-                BedRockRemover remover = new BedRockRemover(block, plugin);
+                block.setType(wallMaterial);
+                WallRemover remover = new WallRemover(block, plugin, spellName);
                 remover.remove();
             }
         }
@@ -129,23 +131,22 @@ public class StoneWall extends Spell {
      *  Gives it a cool "dissolving wall" look.
      *
      */
-    private class BedRockRemover extends BukkitRunnable {
+    private class WallRemover extends BukkitRunnable {
 
         private final MineCraftSpells plugin;
         private final Block block;
+        private final String spellName;
 
-        BedRockRemover(Block block, MineCraftSpells plugin){
+        WallRemover(Block block, MineCraftSpells plugin, String spellName){
             this.plugin = plugin;
             this.block = block;
+            this.spellName = spellName;
         }
 
         public void remove(){
             //Generate a random number between min and max lifetime
-            Integer max = plugin.getConfig().getInt("spells.stone_wall.settings.maximum_ticks");
-            Integer min = plugin.getConfig().getInt("spells.stone_wall.settings.minimum_ticks");
-
-            System.out.println(max);
-            System.out.println(min);
+            Integer max = plugin.getConfig().getInt("spells." + spellName + ".settings.maximum_ticks");
+            Integer min = plugin.getConfig().getInt("spells." + spellName + ".settings.minimum_ticks");
 
             Random rand = new Random();
             plugin.getServer().getScheduler().runTaskLater(plugin, this, rand.nextInt(max - min) + min);
@@ -153,7 +154,10 @@ public class StoneWall extends Spell {
 
         @Override
         public void run() {
-            if(block.getType() == Material.BEDROCK){
+
+            Material materialToRemove = Material.getMaterial(plugin.getConfig().getString("spells." + spellName + ".settings.material"));
+
+            if(block.getType() == materialToRemove){
                 block.setType(Material.AIR);
             }
         }

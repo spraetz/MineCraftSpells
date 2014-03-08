@@ -8,11 +8,13 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import sun.tools.javap.oldjavap.JavaP;
 
 import java.util.ArrayList;
 
@@ -25,8 +27,21 @@ import static org.powermock.api.mockito.PowerMockito.when;
  */
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({MineCraftSpells.class, PlayerInteractEvent.class})
+@PrepareForTest({JavaPlugin.class})
 public class FirstTest {
+    /*
+    @Test
+    public void reproduceStackOverflow(){
+        // Mock config
+        FileConfiguration config = PowerMockito.mock(FileConfiguration.class);
+
+        // Mock the plugin
+        JavaPlugin plugin = PowerMockito.mock(JavaPlugin.class);
+        when(plugin.getConfig()).thenReturn(config);
+
+        plugin.getConfig();
+    }
+
     @Test
     public void testCastSpell(){
 
@@ -69,4 +84,5 @@ public class FirstTest {
         CastSpellListener listener = new CastSpellListener(plugin);
         listener.castSpell(event);
     }
+    */
 }
