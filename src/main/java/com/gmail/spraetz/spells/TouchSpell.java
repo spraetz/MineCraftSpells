@@ -44,7 +44,10 @@ public abstract class TouchSpell {
         return true;
     }
 
-    public void spellEffects(EntityDamageByEntityEvent event, String spellName) {
+    public void spellEffects(EntityDamageByEntityEvent event, String spellName) {}
 
+    public <T> T getSetting(String spellName, String setting, Class<T> as){
+        Object result = plugin.getConfig().get("spells." + spellName + ".settings." + setting);
+        return as.cast(result);
     }
 }

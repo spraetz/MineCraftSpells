@@ -24,7 +24,7 @@ public class Explosion extends Spell{
         explosion.setIsIncendiary(false);
 
         //Set the radius (yield)
-        explosion.setYield(plugin.getConfig().getInt("spells." + spellName + ".settings.radius"));
+        explosion.setYield(getSetting(spellName, "radius", Integer.class));
 
         //Set the shooter to be the current player.
         explosion.setShooter(player);

@@ -22,7 +22,7 @@ public class HealOther extends TouchSpell {
             Double maxHealth = target.getMaxHealth();
             Double currentHealth = target.getHealth();
             Double newHealth = currentHealth +
-                    (maxHealth * .01 * plugin.getConfig().getInt("spells." + spellName + ".settings.percent_of_max_health"));
+                    (maxHealth * .01 * getSetting(spellName, "percent_of_max_health", Integer.class));
 
             if(newHealth > maxHealth){
                 target.setHealth(maxHealth);

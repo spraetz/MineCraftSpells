@@ -172,13 +172,8 @@ public class Spellbook {
     }
 
     public static boolean spellExists(String spellName, MineCraftSpells plugin){
-
-        FileConfiguration fileConfiguration = plugin.getConfig();
-
-        String spell = fileConfiguration.getString("spells." + spellName + ".class", null);
-
-        boolean result = spell != null;
-
-        return result;
+        return plugin.getConfig().getString("spells." + spellName + ".class", null) != null;
     }
+
+
 }

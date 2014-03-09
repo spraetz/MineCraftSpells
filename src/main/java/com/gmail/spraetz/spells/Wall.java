@@ -25,7 +25,7 @@ public class Wall extends Spell {
         PlayerInteractEvent e = (PlayerInteractEvent)event;
 
         //Get width of wall
-        Integer width = plugin.getConfig().getInt("spells." + spellName + ".settings.width");
+        Integer width = getSetting(spellName, "width", Integer.class);
 
         //Get the block the player clicked.
         Block b = event.getPlayer().getTargetBlock(null, 20);
@@ -111,8 +111,8 @@ public class Wall extends Spell {
     
     private void setColumn(int x, int y, int z, PlayerInteractEvent event, String spellName){
 
-        Integer height = plugin.getConfig().getInt("spells." + spellName + ".settings.height");
-        Material wallMaterial = Material.getMaterial(plugin.getConfig().getString("spells." + spellName + ".settings.material"));
+        Integer height = getSetting(spellName, "height", Integer.class);
+        Material wallMaterial = Material.getMaterial(getSetting(spellName, "material", String.class));
 
 
         for (int i = y-(height/2)+1; i <= y+(height/2)+1; i++){
@@ -145,8 +145,8 @@ public class Wall extends Spell {
 
         public void remove(){
             //Generate a random number between min and max lifetime
-            Integer max = plugin.getConfig().getInt("spells." + spellName + ".settings.maximum_ticks");
-            Integer min = plugin.getConfig().getInt("spells." + spellName + ".settings.minimum_ticks");
+            Integer max = getSetting(spellName, "maximum_ticks", Integer.class);
+            Integer min = getSetting(spellName, "minimum_ticks", Integer.class);
 
             Random rand = new Random();
             plugin.getServer().getScheduler().runTaskLater(plugin, this, rand.nextInt(max - min) + min);
@@ -155,7 +155,7 @@ public class Wall extends Spell {
         @Override
         public void run() {
 
-            Material materialToRemove = Material.getMaterial(plugin.getConfig().getString("spells." + spellName + ".settings.material"));
+            Material materialToRemove = Material.getMaterial(getSetting(spellName, "material", String.class));
 
             if(block.getType() == materialToRemove){
                 block.setType(Material.AIR);

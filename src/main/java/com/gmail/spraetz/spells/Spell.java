@@ -29,8 +29,6 @@ public abstract class Spell {
 
     public boolean cast(String spellName){
 
-        PlayerInteractEvent e = (PlayerInteractEvent)event;
-
         // Check if there are charges on the spellbook
         Integer charges = Spellbook.getCharges(player.getItemInHand(), spellName);
 
@@ -57,6 +55,11 @@ public abstract class Spell {
     public void addMetadata(Entity object, Player caster, MineCraftSpells plugin){
         object.setMetadata("isSpell", new FixedMetadataValue(plugin, true));
         object.setMetadata("caster", new FixedMetadataValue(plugin, caster.getUniqueId()));
+    }
+
+    public <T> T getSetting(String spellName, String setting, Class<T> as){
+        Object result = plugin.getConfig().get("spells." + spellName + ".settings." + setting);
+        return as.cast(result);
     }
 
 }

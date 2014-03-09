@@ -139,7 +139,7 @@ public class ChargeSpellbook implements CommandExecutor {
         if(book.getType() != Material.BOOK){
             throw new ChargeSpellException("Must be holding a book to charge it!");
         }
-        if(plugin.getConfig().get("spells." + spellName) == null){
+        if(!Spellbook.spellExists(spellName, plugin)){
             throw new ChargeSpellException("A spell with this name doesn't exist: " + spellName);
         }
         if(!Spellbook.canCharge(book, spellName)){

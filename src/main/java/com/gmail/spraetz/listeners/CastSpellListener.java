@@ -43,7 +43,8 @@ public class CastSpellListener implements Listener {
                 }
                 catch(NoSuchMethodException e){
                     // Do nothing.  This just means we're casting a spell that doesn't use PlayerInteractEvent
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     e.printStackTrace();
                 }
             }

@@ -22,7 +22,7 @@ public class HealSelf extends Spell{
         Double maxHealth = player.getMaxHealth();
         Double currentHealth = player.getHealth();
         Double newHealth = currentHealth +
-                (maxHealth * .01 * plugin.getConfig().getInt("spells." + spellName + ".settings.percent_of_max_health"));
+                (maxHealth * .01 * getSetting(spellName, "percent_of_max_health", Integer.class));
 
         if(newHealth > maxHealth){
             player.setHealth(maxHealth);

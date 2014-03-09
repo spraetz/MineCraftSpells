@@ -24,7 +24,7 @@ public class FireBall extends Spell {
         fireball.setIsIncendiary(true);
 
         //Set the radius (yield)
-        fireball.setYield(plugin.getConfig().getInt("spells." + spellName + ".settings.radius"));
+        fireball.setYield(getSetting(spellName, "radius", Integer.class));
 
         //Set the shooter to be the current player.
         fireball.setShooter(player);
