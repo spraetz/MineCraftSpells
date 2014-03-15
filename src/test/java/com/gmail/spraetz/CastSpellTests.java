@@ -20,7 +20,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
@@ -44,11 +44,15 @@ import static org.powermock.api.mockito.PowerMockito.when;
  */
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({PlayerInteractEvent.class, MineCraftSpells.class, Spellbook.class})
-public class FirstTest {
+@PrepareForTest({PlayerInteractEvent.class, MineCraftSpells.class})
+public class CastSpellTests {
 
-    @BeforeClass
-    public static void testClassSetup(){
+    FileConfiguration config;
+
+    @Before
+    public void testClassSetup(){
+        File configFile = new File(new File("").getAbsolutePath() + "/src/main/resources/config.yml");
+        config = YamlConfiguration.loadConfiguration(configFile);
         MockGateway.MOCK_STANDARD_METHODS = false;
     }
 
@@ -56,8 +60,6 @@ public class FirstTest {
     public void testCastSpell(){
 
         //Find the list of all the spells:
-        File configFile = new File(new File("").getAbsolutePath() + "/src/main/resources/config.yml");
-        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
         Set<String> spells = config.getConfigurationSection("spells").getKeys(false);
 
         for(String spellName : spells){
@@ -139,8 +141,6 @@ public class FirstTest {
             ArrayList<String> loreListToVerify = new ArrayList<String>();
             loreListToVerify.add(spellName + Spellbook.LORE_STRING_SEPARATOR + "63");
             verify(itemMeta).setLore(loreListToVerify);
-
         }
-
     }
 }

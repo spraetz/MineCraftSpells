@@ -61,6 +61,7 @@ public class ChargeSpellbook implements CommandExecutor {
             //Remove them from inventory
             removeReagentsFromInventory(p, reagents, chargesToAdd);
 
+            //Add the charges to the book
             Spellbook.addCharges(book, spellName, chargesToAdd);
 
             return true;
