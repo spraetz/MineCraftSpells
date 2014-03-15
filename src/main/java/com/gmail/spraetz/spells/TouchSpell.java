@@ -39,15 +39,15 @@ public abstract class TouchSpell {
         Spellbook.setCharges(player.getItemInHand(), spellName, charges - 1);
 
         // Record it!
-        plugin.analytics.trackSpellCast(player, spellName);
+        plugin.getAnalytics().trackSpellCast(player, spellName);
 
         return true;
     }
-
-    public void spellEffects(EntityDamageByEntityEvent event, String spellName) {}
 
     public <T> T getSetting(String spellName, String setting, Class<T> as){
         Object result = plugin.getConfig().get("spells." + spellName + ".settings." + setting);
         return as.cast(result);
     }
+
+    public void spellEffects(EntityDamageByEntityEvent event, String spellName) {}
 }

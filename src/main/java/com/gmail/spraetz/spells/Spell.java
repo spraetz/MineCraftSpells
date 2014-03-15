@@ -45,7 +45,7 @@ public abstract class Spell {
         Spellbook.setCharges(player.getItemInHand(), spellName, charges - 1);
 
         // Record it!
-        plugin.analytics.trackSpellCast(player, spellName);
+        plugin.getAnalytics().trackSpellCast(player, spellName);
 
         return true;
     }

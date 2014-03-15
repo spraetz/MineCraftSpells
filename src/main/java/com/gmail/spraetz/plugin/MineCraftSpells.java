@@ -11,7 +11,15 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class MineCraftSpells extends JavaPlugin{
 
-    public Analytics analytics;
+    private Analytics analytics;
+
+    public Analytics getAnalytics(){
+        return analytics;
+    }
+
+    public void setAnalytics(Analytics a){
+        this.analytics = a;
+    }
 
     @Override
     public void onEnable() {
@@ -19,7 +27,7 @@ public class MineCraftSpells extends JavaPlugin{
         setupConfig();
 
         //Set up tracking
-        analytics = setupAnalytics();
+        setAnalytics(new Analytics(this));
 
         //Register commands
         registerCommands();
@@ -42,9 +50,5 @@ public class MineCraftSpells extends JavaPlugin{
         //Look for a config.yml file in the plugins folder.
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
-    }
-
-    public Analytics setupAnalytics() {
-        return new Analytics(this);
     }
 }

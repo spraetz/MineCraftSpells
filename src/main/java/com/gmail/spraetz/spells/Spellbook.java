@@ -34,6 +34,7 @@ public class Spellbook {
 
     public static Integer getCharges(ItemStack spellbook, String spellName){
         ArrayList<String> loreList = (ArrayList<String>)spellbook.getItemMeta().getLore();
+
         if(loreList == null || loreList.size() == 0){
             return 0;
         }
@@ -172,7 +173,7 @@ public class Spellbook {
     }
 
     public static boolean spellExists(String spellName, MineCraftSpells plugin){
-        return plugin.getConfig().getString("spells." + spellName + ".class", null) != null;
+        return plugin.getConfig().getString("spells." + spellName + ".class") != null;
     }
 
 
