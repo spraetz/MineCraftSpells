@@ -22,7 +22,6 @@ public class LightningBolt extends Spell {
 
         player.getWorld().strikeLightning(strikeLocation);
 
-        //TODO: This doesn't work for some reason?
         player.getWorld().playEffect(strikeLocation, Effect.SMOKE, 4, 20);
     }
 }

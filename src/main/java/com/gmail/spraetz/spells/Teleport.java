@@ -26,7 +26,7 @@ public class Teleport extends Spell {
         Location currentLocation = player.getLocation();
 
         // If the player is teleport into a solid block, step them one block back towards where they came from.
-        if(toLocation.getBlock().getType() != Material.AIR){
+        if(toLocation.getBlock() != null && toLocation.getBlock().getType() != Material.AIR){
             //Triangle math =(
             if(toLocation.getBlockX() > currentLocation.getBlockX() ){
                 toLocation.add(-1, 0, 0);
