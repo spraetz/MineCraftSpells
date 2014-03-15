@@ -89,7 +89,7 @@ public class FirstTest {
             ItemMeta itemMeta = mock(ItemMeta.class);
             when(itemMeta.getDisplayName()).thenReturn(spellName);
             ArrayList<String> loreList = new ArrayList<String>();
-            loreList.add(spellName + ": 64");
+            loreList.add(spellName + Spellbook.LORE_STRING_SEPARATOR + "64");
             when(itemMeta.getLore()).thenReturn(loreList);
 
             //Mock a spellbook
@@ -137,7 +137,7 @@ public class FirstTest {
 
             //Verify that our spell was cast and our spellbook updated.
             ArrayList<String> loreListToVerify = new ArrayList<String>();
-            loreListToVerify.add(spellName + ": 63");
+            loreListToVerify.add(spellName + Spellbook.LORE_STRING_SEPARATOR + "63");
             verify(itemMeta).setLore(loreListToVerify);
 
         }

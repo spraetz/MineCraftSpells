@@ -26,7 +26,7 @@ public class Spellbook {
 
     public static Integer MAX_SPELL_CHARGES = 64;
     public static Integer MAX_NUMBER_OF_SPELLS_PER_BOOK = 3;
-    private static String LORE_STRING_SEPARATOR = ": ";
+    public static String LORE_STRING_SEPARATOR = ": ";
 
     public static String chargeString(String spellName, Integer numberOfCharges){
         return spellName + ": " + numberOfCharges;
