@@ -12,6 +12,7 @@ spells:
         quantity: 1
     settings:
       radius: 2
+      damage_multiplier: 1
   fire_ball:
     class: com.gmail.spraetz.spells.FireBall
     reagents:
@@ -19,7 +20,9 @@ spells:
         quantity: 2
     settings:
       radius: 1
-      damage_multiplier: 1.5
+      damage_multiplier: 1
+      ignite_radius: 3
+      fire_ticks: 100
   lightning_bolt:
     class: com.gmail.spraetz.spells.LightningBolt
     reagents:

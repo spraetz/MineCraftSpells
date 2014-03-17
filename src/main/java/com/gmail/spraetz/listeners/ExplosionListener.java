@@ -3,6 +3,7 @@ package com.gmail.spraetz.listeners;
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import com.gmail.spraetz.spells.Spellbook;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -39,8 +40,8 @@ public class ExplosionListener implements Listener {
                 Class spellClass = Spellbook.getSpellClass(spellName, plugin);
 
                 try {
-                    Method method = spellClass.getMethod("onImpact", Location.class, String.class, MineCraftSpells.class);
-                    method.invoke(null, event.getEntity().getLocation(), spellName, plugin);
+                    Method method = spellClass.getMethod("onImpact", Entity.class, String.class, MineCraftSpells.class);
+                    method.invoke(null, event.getEntity(), spellName, plugin);
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
                 } catch (InvocationTargetException e) {

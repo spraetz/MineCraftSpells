@@ -31,6 +31,7 @@ public class HealSelf extends Spell{
         }
 
         plugin.getEffects().playVisual(plugin, player.getLocation(), "heart", .2F, .2F, .1F, 3, 2F);
+        plugin.getEffects().playSound(plugin, player.getLocation(), "random.orb");
         return true;
     }
 }

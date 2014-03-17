@@ -2,7 +2,9 @@ package com.gmail.spraetz.spells;
 
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
+import org.bukkit.entity.WitherSkull;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 /**
@@ -18,7 +20,7 @@ public class Explosion extends Spell{
     public Boolean spellEffects(PlayerInteractEvent e, String spellName){
 
         //Spawn a new fireball at the next tick at the player's current location.
-        Fireball explosion = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
+        WitherSkull explosion = player.getWorld().spawn(player.getEyeLocation(), WitherSkull.class);
 
         //Explosions have no fire.
         explosion.setIsIncendiary(false);
@@ -36,7 +38,7 @@ public class Explosion extends Spell{
     }
 
     //TODO: Move this to Spell.java and add a new constructor and make instance method
-    public static void onImpact(Location location, String spellName, MineCraftSpells plugin){
-        plugin.getEffects().playVisual(plugin, location, "largesmoke", 1F, 1F, .1F, 20, 0F);
+    public static void onImpact(Entity entity, String spellName, MineCraftSpells plugin){
+        plugin.getEffects().playVisual(plugin, entity.getLocation(), "largesmoke", 1F, 1F, .1F, 20, 0F);
     }
 }

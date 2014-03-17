@@ -2,8 +2,11 @@ package com.gmail.spraetz.spells;
 
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.event.player.PlayerInteractEvent;
+
+import java.util.ArrayList;
 
 /**
  * Created by spraetz on 2/16/14.
@@ -40,8 +43,21 @@ public class FireBall extends Spell {
     }
 
     //TODO: Move this to Spell.java and add a new constructor and make instance method
-    public static void onImpact(Location location, String spellName, MineCraftSpells plugin){
-        plugin.getEffects().playVisual(plugin, location, "lava", 1F, 1F, .1F, 20, 0F);
-        plugin.getEffects().playVisual(plugin, location, "flame", 1F, 1F, .1F, 20, 0F);
+    public static void onImpact(Entity entity, String spellName, MineCraftSpells plugin){
+
+        //Get some settings.
+        //TODO: Once this becomes an instance method, use getSettings
+        Integer igniteRadius = plugin.getConfig().getInt("spells." + spellName + ".settings.ignite_radius");
+        Integer fireTicks = plugin.getConfig().getInt("spells." + spellName + ".settings.fire_ticks");
+
+        //Light nearby entites on fire.
+        ArrayList<Entity> entities = (ArrayList<Entity>)entity.getNearbyEntities(igniteRadius, igniteRadius, igniteRadius);
+        for(Entity e : entities){
+            e.setFireTicks(fireTicks);
+        }
+
+        //Show effects.
+        plugin.getEffects().playVisual(plugin, entity.getLocation(), "lava", 1F, 1F, .1F, 20, 0F);
+        plugin.getEffects().playVisual(plugin, entity.getLocation(), "flame", 1F, 1F, .1F, 20, 0F);
     }
 }

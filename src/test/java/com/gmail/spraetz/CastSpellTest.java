@@ -11,6 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.WitherSkull;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -52,12 +53,14 @@ public class CastSpellTest extends BaseTest{
 
             //Mock the damn fireball
             Fireball fireball = PowerMockito.mock(Fireball.class);
+            WitherSkull witherSkull = PowerMockito.mock(WitherSkull.class);
 
             //Mock a target block
             Block block = PowerMockito.mock(Block.class);
 
             //Mock the world
-            when(world.spawn(any(Location.class), any(Class.class))).thenReturn(fireball);
+            when(world.spawn(any(Location.class), eq(Fireball.class))).thenReturn(fireball);
+            when(world.spawn(any(Location.class), eq(WitherSkull.class))).thenReturn(witherSkull);
             when(world.getBlockAt(anyInt(), anyInt(), anyInt())).thenReturn(block);
             when(world.getSpawnLocation()).thenReturn(new Location(world, 0, 0, 0));
 

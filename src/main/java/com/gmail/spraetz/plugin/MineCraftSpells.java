@@ -3,6 +3,7 @@ package com.gmail.spraetz.plugin;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.gmail.spraetz.commands.ChargeSpellbook;
+import com.gmail.spraetz.commands.LaunchTest;
 import com.gmail.spraetz.commands.ParticleTest;
 import com.gmail.spraetz.commands.SoundTest;
 import com.gmail.spraetz.listeners.*;
@@ -52,6 +53,7 @@ public class MineCraftSpells extends JavaPlugin{
         getCommand("charge").setExecutor(new ChargeSpellbook(this));
         getCommand("particle").setExecutor(new ParticleTest(this));
         getCommand("sound").setExecutor(new SoundTest(this));
+        getCommand("launch").setExecutor(new LaunchTest(this));
     }
 
     public void registerEventListeners(){
