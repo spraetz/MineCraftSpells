@@ -4,7 +4,6 @@ import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -20,9 +19,7 @@ public class Wall extends Spell {
     }
 
     @Override
-    public void spellEffects(PlayerEvent event, String spellName) {
-
-        PlayerInteractEvent e = (PlayerInteractEvent)event;
+    public Boolean spellEffects(PlayerInteractEvent event, String spellName) {
 
         //Get width of wall
         Integer width = getSetting(spellName, "width", Integer.class);
@@ -45,8 +42,9 @@ public class Wall extends Spell {
         Double z2 = wallMiddle.getZ() - ((width) * (slope / Math.sqrt(1+Math.pow(slope, 2))));
 
         draw((int)Math.round(x1), (int)Math.round(z1),
-                (int)Math.round(x2), (int)Math.round(z2),  wallMiddle.getBlockY(), e, spellName);
+                (int)Math.round(x2), (int)Math.round(z2),  wallMiddle.getBlockY(), event, spellName);
 
+        return true;
     }
 
     /*

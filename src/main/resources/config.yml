@@ -9,16 +9,17 @@ spells:
     class: com.gmail.spraetz.spells.Explosion
     reagents:
       - reagent: SULPHUR
-        quantity: 2
+        quantity: 1
     settings:
-      radius: 3
+      radius: 2
   fire_ball:
     class: com.gmail.spraetz.spells.FireBall
     reagents:
-      - reagent: FLINT_AND_STEEL
+      - reagent: COAL
         quantity: 2
     settings:
       radius: 1
+      damage_multiplier: 1.5
   lightning_bolt:
     class: com.gmail.spraetz.spells.LightningBolt
     reagents:
@@ -32,7 +33,7 @@ spells:
   stone_wall:
     class: com.gmail.spraetz.spells.Wall
     reagents:
-      - reagent: STONE
+      - reagent: COBBLESTONE
         quantity: 8
     settings:
       material: BEDROCK
@@ -43,7 +44,7 @@ spells:
   heal_self:
     class: com.gmail.spraetz.spells.HealSelf
     reagents:
-      - reagent: DIAMOND
+      - reagent: APPLE
         quantity: 1
     settings:
       percent_of_max_health: 30
@@ -56,3 +57,24 @@ spells:
         quantity: 1
     settings:
       percent_of_max_health: 30
+  recall:
+    class: com.gmail.spraetz.spells.Recall
+    reagents:
+      - reagent: EYE_OF_ENDER
+        quantity: 1
+  flight:
+    class: com.gmail.spraetz.spells.Flight
+    reagents:
+      - reagent: FEATHER
+        quantity: 1
+    settings:
+      ticks: 400
+  push:
+    class: com.gmail.spraetz.spells.Push
+    reagents:
+      - reagent: WHEAT
+        quantity: 1
+    settings:
+      knockback: 2.0
+      up_force: 0.5
+      max_up_force: 1.0

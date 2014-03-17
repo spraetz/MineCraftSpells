@@ -18,10 +18,10 @@ import java.util.List;
 public abstract class Spell {
 
     MineCraftSpells plugin;
-    PlayerEvent event;
+    PlayerInteractEvent event;
     Player player;
 
-    public Spell(PlayerEvent event, MineCraftSpells plugin){
+    public Spell(PlayerInteractEvent event, MineCraftSpells plugin){
         this.player = event.getPlayer();
         this.plugin = plugin;
         this.event = event;
@@ -39,21 +39,24 @@ public abstract class Spell {
         }
 
         // Cause spell effects
-        spellEffects(event, spellName);
+        Boolean success = spellEffects(event, spellName);
 
-        // Remove a charge
-        Spellbook.setCharges(player.getItemInHand(), spellName, charges - 1);
+        if(success){
+            // Remove a charge
+            Spellbook.setCharges(player.getItemInHand(), spellName, charges - 1);
 
-        // Record it!
-        plugin.getAnalytics().trackSpellCast(player, spellName);
+            // Record it!
+            plugin.getAnalytics().trackSpellCast(player, spellName);
+        }
 
         return true;
     }
 
-    public abstract void spellEffects(PlayerEvent event, String spellName);
+    public abstract Boolean spellEffects(PlayerInteractEvent event, String spellName);
 
-    public void addMetadata(Entity object, Player caster, MineCraftSpells plugin){
+    public void addMetadata(Entity object, Player caster, String spellName, MineCraftSpells plugin){
         object.setMetadata("isSpell", new FixedMetadataValue(plugin, true));
+        object.setMetadata("spellName", new FixedMetadataValue(plugin, spellName));
         object.setMetadata("caster", new FixedMetadataValue(plugin, caster.getUniqueId()));
     }
 
@@ -61,5 +64,4 @@ public abstract class Spell {
         Object result = plugin.getConfig().get("spells." + spellName + ".settings." + setting);
         return as.cast(result);
     }
-
 }

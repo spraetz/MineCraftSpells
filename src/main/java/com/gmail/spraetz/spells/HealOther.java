@@ -14,7 +14,7 @@ public class HealOther extends TouchSpell {
     }
 
     @Override
-    public void spellEffects(EntityDamageByEntityEvent event, String spellName) {
+    public Boolean spellEffects(EntityDamageByEntityEvent event, String spellName) {
 
         if(event.getEntity() instanceof Damageable){
             Damageable target = (Damageable)event.getEntity();
@@ -30,6 +30,12 @@ public class HealOther extends TouchSpell {
             else{
                 target.setHealth(newHealth);
             }
+
+            plugin.getEffects().playVisual(plugin, target.getLocation(), "heart", .2F, .2F, .1F, 3, 2F);
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }

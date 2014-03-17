@@ -49,5 +49,5 @@ public abstract class TouchSpell {
         return as.cast(result);
     }
 
-    public void spellEffects(EntityDamageByEntityEvent event, String spellName) {}
+    public abstract Boolean spellEffects(EntityDamageByEntityEvent event, String spellName);
 }

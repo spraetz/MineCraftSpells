@@ -6,7 +6,7 @@
 
     <groupId>com.gmail.spraetz</groupId>
     <artifactId>MineCraftSpells</artifactId>
-    <version>2.0</version>
+    <version>2.1</version>
 
     <build>
         <plugins>
@@ -36,6 +36,7 @@
                                 </includes>
                                 <excludes>
                                     <exclude>org.bukkit:bukkit</exclude>
+                                    <exclude>com.comphenix.protocol:ProtocolLib</exclude>
                                 </excludes>
                             </artifactSet>
                         </configuration>
@@ -51,7 +52,7 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <copy file="/Users/spraetz/dev/MineCraftSpells/target/MineCraftSpells-2.0.jar" tofile="/Users/spraetz/MineCraft/MineCraftSpells/plugins/MineCraftSpells-2.0.jar"/>
+                                <copy file="/Users/spraetz/dev/MineCraftSpells/target/MineCraftSpells-2.1.jar" tofile="/Users/spraetz/MineCraft/MineCraftSpells/plugins/MineCraftSpells-2.1.jar"/>
                             </tasks>
                         </configuration>
                         <goals>
@@ -67,6 +68,11 @@
         <repository>
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>comphenix-rep</id>
+            <name>Comphenix Repository</name>
+            <url>http://repo.comphenix.net/content/groups/public</url>
         </repository>
     </repositories>
 
@@ -104,6 +110,16 @@
             <version>1.4.9</version>
             <type>jar</type>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.comphenix.packetwrapper</groupId>
+            <artifactId>PacketWrapper</artifactId>
+            <version>1.7.2-R0.3</version>
         </dependency>
     </dependencies>
 

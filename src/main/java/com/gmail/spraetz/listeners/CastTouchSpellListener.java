@@ -38,6 +38,7 @@ public class CastTouchSpellListener implements Listener {
                 if(Spellbook.spellExists(displayName, plugin)){
 
                     Class spellClass = Spellbook.getSpellClass(displayName, plugin);
+
                     try{
                         Constructor constructor = spellClass.getConstructor(new Class[]{EntityDamageByEntityEvent.class, MineCraftSpells.class});
                         Object obj = constructor.newInstance(event, plugin);

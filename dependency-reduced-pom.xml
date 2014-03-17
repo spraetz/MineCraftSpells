@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gmail.spraetz</groupId>
   <artifactId>MineCraftSpells</artifactId>
-  <version>2.0</version>
+  <version>2.1</version>
   <build>
     <plugins>
       <plugin>
@@ -30,6 +30,7 @@
                 </includes>
                 <excludes>
                   <exclude>org.bukkit:bukkit</exclude>
+                  <exclude>com.comphenix.protocol:ProtocolLib</exclude>
                 </excludes>
               </artifactSet>
             </configuration>
@@ -60,6 +61,11 @@
     <repository>
       <id>bukkit-repo</id>
       <url>http://repo.bukkit.org/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>comphenix-rep</id>
+      <name>Comphenix Repository</name>
+      <url>http://repo.comphenix.net/content/groups/public</url>
     </repository>
   </repositories>
   <dependencies>
@@ -102,6 +108,12 @@
           <groupId>org.powermock</groupId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.comphenix.protocol</groupId>
+      <artifactId>ProtocolLib</artifactId>
+      <version>3.2.0</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 </project>

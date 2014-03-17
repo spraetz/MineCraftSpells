@@ -3,7 +3,6 @@ package com.gmail.spraetz.spells;
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
@@ -17,7 +16,7 @@ public class Teleport extends Spell {
     }
 
     @Override
-    public void spellEffects(PlayerEvent e, String spellName) {
+    public Boolean spellEffects(PlayerInteractEvent e, String spellName) {
 
         // Get the block the player is currently targeting.
         // Add 1 in the Y direction so they don't sink into the ground.
@@ -44,11 +43,16 @@ public class Teleport extends Spell {
 
         // Set the Yaw to be the player's current yaw to maintain the direction the player is facing.
         toLocation.setYaw(player.getLocation().getYaw());
+        toLocation.setPitch(player.getLocation().getPitch());
 
         // Perform the teleport.
         player.teleport(toLocation, PlayerTeleportEvent.TeleportCause.PLUGIN);
 
-        // Make a lightning clap to sound badass.
-        player.getWorld().strikeLightningEffect(player.getTargetBlock(null, 20).getLocation().add(0, 1, 0));
+        // Make effects.
+        plugin.getEffects().playSound(plugin, toLocation, "mob.zombie.woodbreak");
+        plugin.getEffects().playVisual(plugin, currentLocation, "cloud", .2F, .2F, .1F, 20, 0F);
+        plugin.getEffects().playVisual(plugin, toLocation, "cloud", .2F, .2F, .1F, 20, 0F);
+
+        return true;
     }
 }

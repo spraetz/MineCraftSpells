@@ -1,9 +1,11 @@
 package com.gmail.spraetz.plugin;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import com.gmail.spraetz.commands.ChargeSpellbook;
-import com.gmail.spraetz.listeners.CastSpellListener;
-import com.gmail.spraetz.listeners.CastTouchSpellListener;
-import com.gmail.spraetz.listeners.RotateSpellListener;
+import com.gmail.spraetz.commands.ParticleTest;
+import com.gmail.spraetz.commands.SoundTest;
+import com.gmail.spraetz.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -11,12 +13,17 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class MineCraftSpells extends JavaPlugin{
 
+    private Effects effects;
+    public Effects getEffects(){
+        return effects;
+    }
+    public void setEffects(Effects e){
+        this.effects = e;
+    }
     private Analytics analytics;
-
     public Analytics getAnalytics(){
         return analytics;
     }
-
     public void setAnalytics(Analytics a){
         this.analytics = a;
     }
@@ -36,14 +43,23 @@ public class MineCraftSpells extends JavaPlugin{
         registerEventListeners();
     }
 
+    @Override
+    public void onLoad(){
+        setEffects(new Effects());
+    }
+
     public void registerCommands(){
         getCommand("charge").setExecutor(new ChargeSpellbook(this));
+        getCommand("particle").setExecutor(new ParticleTest(this));
+        getCommand("sound").setExecutor(new SoundTest(this));
     }
 
     public void registerEventListeners(){
         this.getServer().getPluginManager().registerEvents(new CastSpellListener(this), this);
         this.getServer().getPluginManager().registerEvents(new RotateSpellListener(this), this);
         this.getServer().getPluginManager().registerEvents(new CastTouchSpellListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new ExplosionListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new EntityDamagedByEntityListener(this), this);
     }
 
     public void setupConfig(){

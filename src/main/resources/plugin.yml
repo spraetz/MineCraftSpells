@@ -1,6 +1,7 @@
 name: MineCraftSpells
-version: 2.0
+version: 2.1
 main: com.gmail.spraetz.plugin.MineCraftSpells
+depend: [ProtocolLib]
 
 commands:
   charge:
@@ -8,6 +9,17 @@ commands:
     usage: /<command> spell [charges]
     permission: player
     permission-message: You don't have <permission>
+  particle:
+    description: Used to test particle effects
+    usage: /<command> effectName
+    permission: player
+    permission-message: You don't have <permission>
+  sound:
+    description: Used to test sound effects
+    usage: /<command> effectName
+    permission: player
+    permission-message: You don't have <permission>
+
 
 permissions:
   player:

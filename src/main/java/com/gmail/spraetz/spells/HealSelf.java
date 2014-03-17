@@ -2,7 +2,6 @@ package com.gmail.spraetz.spells;
 
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 /**
@@ -15,7 +14,7 @@ public class HealSelf extends Spell{
     }
 
     @Override
-    public void spellEffects(PlayerEvent event, String spellName) {
+    public Boolean spellEffects(PlayerInteractEvent event, String spellName) {
 
         Player player = event.getPlayer();
 
@@ -30,5 +29,8 @@ public class HealSelf extends Spell{
         else{
             player.setHealth(newHealth);
         }
+
+        plugin.getEffects().playVisual(plugin, player.getLocation(), "heart", .2F, .2F, .1F, 3, 2F);
+        return true;
     }
 }

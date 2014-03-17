@@ -59,6 +59,7 @@ public class CastSpellTest extends BaseTest{
             //Mock the world
             when(world.spawn(any(Location.class), any(Class.class))).thenReturn(fireball);
             when(world.getBlockAt(anyInt(), anyInt(), anyInt())).thenReturn(block);
+            when(world.getSpawnLocation()).thenReturn(new Location(world, 0, 0, 0));
 
             when(block.getLocation()).thenReturn(new Location(world, 0, 0, 0));
             when(block.getType()).thenReturn(Material.STONE);
@@ -70,11 +71,11 @@ public class CastSpellTest extends BaseTest{
             when(spellbookMeta.getLore()).thenReturn(loreList);
 
             //Mock the player
-            when(player.getItemInHand()).thenReturn(spellbook);
             when(player.getWorld()).thenReturn(world);
             when(player.getEyeLocation()).thenReturn(new Location(world, 0, 0, 0));
             when(player.getTargetBlock(any(HashSet.class), anyInt())).thenReturn(block);
             when(player.getLocation()).thenReturn(new Location(world, 0, 0, 0, 0 ,0));
+            when(player.getBedSpawnLocation()).thenReturn(null);
 
             //Holy shit we're gonna do something that isn't a mock!
             //Get the spell class for the spell.

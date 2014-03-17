@@ -3,7 +3,6 @@ package com.gmail.spraetz.spells;
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 /**
@@ -16,12 +15,14 @@ public class LightningBolt extends Spell {
     }
 
     @Override
-    public void spellEffects(PlayerEvent event, String spellName) {
+    public Boolean spellEffects(PlayerInteractEvent event, String spellName) {
 
         Location strikeLocation = player.getTargetBlock(null, 20).getLocation();
 
         player.getWorld().strikeLightning(strikeLocation);
 
         player.getWorld().playEffect(strikeLocation, Effect.SMOKE, 4, 20);
+
+        return true;
     }
 }

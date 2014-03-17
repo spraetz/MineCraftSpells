@@ -55,7 +55,6 @@ public class Spellbook {
 
         //If lore is empty, easy to add.
         if(loreList == null || loreList.size() == 0){
-            System.out.println("in if");
             loreList = new ArrayList<String>();
             loreList.add(chargeString(spellName, numberOfCharges));
             itemMeta.setDisplayName(spellName);
