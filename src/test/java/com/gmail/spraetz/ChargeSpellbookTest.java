@@ -17,8 +17,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
@@ -146,6 +145,46 @@ public class ChargeSpellbookTest extends BaseTest{
     @Test
     public void testRechargeSpellbook(){
 
+        Object[] objectArray = config.getConfigurationSection("spells").getKeys(false).toArray();
+        String[] spellNames =  Arrays.asList(objectArray).toArray(new String[objectArray.length]);
+
+        //Get a spell name.
+        String spellName = spellNames[0];
+
+        //Create a full spellbook.
+        ArrayList<String> loreList = new ArrayList<String>();
+        for(int i = 0; i < Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK; i++){
+            loreList.add(spellNames[i] + Spellbook.LORE_STRING_SEPARATOR + "0");
+        }
+        when(spellbookMeta.getLore()).thenReturn(loreList);
+        when(spellbookMeta.getDisplayName()).thenReturn(spellName);
+
+        //Recharge each spell on the book
+        for(int i = 0; i < Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK; i++){
+
+            //Mock inventory contents
+            ItemStack[] items = getReagentsForInventory(spellNames[i], 1, plugin);
+            when(playerInventory.getContents()).thenReturn(items);
+
+            String[] args = new String[]{
+                    spellNames[i],
+                    "1"
+            };
+
+            chargeSpellbook(player, args);
+
+            ArrayList<String> newLore = new ArrayList<String>();
+            for(int j = 0; j < Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK; j++){
+                if(j <= i){
+                    newLore.add(spellNames[j] + Spellbook.LORE_STRING_SEPARATOR + "1");
+                }
+                else{
+                    newLore.add(spellNames[j] + Spellbook.LORE_STRING_SEPARATOR + "0");
+                }
+            }
+
+            verify(spellbookMeta, atLeastOnce()).setLore(newLore);
+        }
     }
 
     @Test
