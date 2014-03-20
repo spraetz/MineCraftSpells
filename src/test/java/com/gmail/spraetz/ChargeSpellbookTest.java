@@ -91,7 +91,7 @@ public class ChargeSpellbookTest extends BaseTest{
     }
 
     @Test
-    public void testChargeSpellTooManySpells(){
+    public void testChargeSpellbookTooManySpells(){
 
         Object[] objectArray = config.getConfigurationSection("spells").getKeys(false).toArray();
         String[] spellNames =  Arrays.asList(objectArray).toArray(new String[objectArray.length]);
@@ -113,7 +113,44 @@ public class ChargeSpellbookTest extends BaseTest{
                 "1"
         };
 
+        chargeSpellbook(player, args);
+
         verify(player).sendMessage("That book is already full of spells!");
+    }
+
+    @Test
+    public void testChargeNewSpellbook(){
+
+        String spellName = (String) config.getConfigurationSection("spells").getKeys(false).toArray()[0];
+
+        when(spellbookMeta.getLore()).thenReturn(null);
+        when(spellbookMeta.getDisplayName()).thenReturn("BOOK");
+
+        //Mock inventory contents
+        ItemStack[] items = getReagentsForInventory(spellName, 1, plugin);
+        when(playerInventory.getContents()).thenReturn(items);
+
+        String[] args = new String[]{
+                spellName,
+                "1"
+        };
+
+        chargeSpellbook(player, args);
+
+        ArrayList<String> newLore = new ArrayList<String>();
+        newLore.add(spellName + Spellbook.LORE_STRING_SEPARATOR + "1");
+        verify(spellbookMeta).setLore(newLore);
+        verify(spellbookMeta).setDisplayName(spellName);
+    }
+
+    @Test
+    public void testRechargeSpellbook(){
+
+    }
+
+    @Test
+    public void testChargeSpellbookNoReagents(){
+
     }
 
     public void chargeSpellbook(Player player, String[] args){

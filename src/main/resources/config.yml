@@ -49,6 +49,8 @@ spells:
     reagents:
       - reagent: APPLE
         quantity: 1
+      - reagent: GLOWSTONE_DUST
+        quantity: 1
     settings:
       percent_of_max_health: 30
   heal_other:

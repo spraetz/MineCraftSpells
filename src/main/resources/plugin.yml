@@ -1,5 +1,5 @@
 name: MineCraftSpells
-version: 2.1
+version: 2.2
 main: com.gmail.spraetz.plugin.MineCraftSpells
 depend: [ProtocolLib]
 
