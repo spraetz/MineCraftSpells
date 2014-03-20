@@ -8,7 +8,9 @@ spells:
   explosion:
     class: com.gmail.spraetz.spells.Explosion
     reagents:
-      - reagent: SULPHUR
+      - reagent: FLINT
+        quantity: 1
+      - reagent: WHEAT
         quantity: 1
     settings:
       radius: 2
@@ -16,8 +18,10 @@ spells:
   fire_ball:
     class: com.gmail.spraetz.spells.FireBall
     reagents:
-      - reagent: COAL
-        quantity: 2
+      - reagent: FLINT
+        quantity: 1
+      - reagent: CACTUS
+        quantity: 1
     settings:
       radius: 1
       damage_multiplier: 1
@@ -26,18 +30,22 @@ spells:
   lightning_bolt:
     class: com.gmail.spraetz.spells.LightningBolt
     reagents:
-      - reagent: GOLD_INGOT
+      - reagent: COAL
+        quantity: 1
+      - reagent: WHEAT
         quantity: 1
   teleport:
     class: com.gmail.spraetz.spells.Teleport
     reagents:
-      - reagent: REDSTONE
-        quantity: 3
+      - reagent: EGG
+        quantity: 1
+      - reagent: LEATHER
+        quantity: 1
   stone_wall:
     class: com.gmail.spraetz.spells.Wall
     reagents:
-      - reagent: COBBLESTONE
-        quantity: 8
+      - reagent: WHEAT
+        quantity: 2
     settings:
       material: BEDROCK
       height: 5
@@ -47,30 +55,34 @@ spells:
   heal_self:
     class: com.gmail.spraetz.spells.HealSelf
     reagents:
-      - reagent: APPLE
+      - reagent: WOOL
         quantity: 1
-      - reagent: GLOWSTONE_DUST
+      - reagent: FEATHER
         quantity: 1
     settings:
       percent_of_max_health: 30
   heal_other:
     class: com.gmail.spraetz.spells.HealOther
     reagents:
-      - reagent: SPECKLED_MELON
+      - reagent: WOOL
         quantity: 1
-      - reagent: GLOWSTONE_DUST
+      - reagent: SUGAR_CANE
         quantity: 1
     settings:
       percent_of_max_health: 30
   recall:
     class: com.gmail.spraetz.spells.Recall
     reagents:
-      - reagent: EYE_OF_ENDER
+      - reagent: EGG
+        quantity: 1
+      - reagent: WOOL
         quantity: 1
   flight:
     class: com.gmail.spraetz.spells.Flight
     reagents:
       - reagent: FEATHER
+        quantity: 1
+      - reagent: LEATHER
         quantity: 1
     settings:
       ticks: 400
@@ -78,7 +90,7 @@ spells:
     class: com.gmail.spraetz.spells.Push
     reagents:
       - reagent: WHEAT
-        quantity: 1
+        quantity: 2
     settings:
       knockback: 2.0
       up_force: 0.5
