@@ -3,28 +3,16 @@ package com.gmail.spraetz.plugin;
 import com.comphenix.packetwrapper.AbstractPacket;
 import com.comphenix.packetwrapper.WrapperPlayServerNamedSoundEffect;
 import com.comphenix.packetwrapper.WrapperPlayServerWorldParticles;
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
-import com.comphenix.protocol.events.PacketContainer;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 
 /**
  * Created by spraetz on 3/15/14.
  */
 public class Effects {
 
-    private final ProtocolManager protocolManager;
     public static Integer BROADCAST_RADIUS = 32;
-
-    public Effects(){
-        this.protocolManager = ProtocolLibrary.getProtocolManager();
-    }
 
     public void playVisual(MineCraftSpells plugin, Location location, String name, float spreadHoriz, float spreadVert,
                            float speed, int count, float yOffset) {

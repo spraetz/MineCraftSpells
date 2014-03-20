@@ -13,6 +13,7 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 
 import static org.mockito.Matchers.anyString;
@@ -87,6 +88,32 @@ public class ChargeSpellbookTest extends BaseTest{
         chargeSpellbook(player, args);
 
         verify(player).sendMessage("You can't charge that spellbook right now.  Is it full or are you missing reagents");
+    }
+
+    @Test
+    public void testChargeSpellTooManySpells(){
+
+        Object[] objectArray = config.getConfigurationSection("spells").getKeys(false).toArray();
+        String[] spellNames =  Arrays.asList(objectArray).toArray(new String[objectArray.length]);
+
+        //Get a spell name.
+        String spellName = spellNames[0];
+
+        //Create a full spellbook.
+        ArrayList<String> loreList = new ArrayList<String>();
+        for(int i = 0; i < Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK; i++){
+            loreList.add(spellNames[i] + Spellbook.LORE_STRING_SEPARATOR + Spellbook.MAX_SPELL_CHARGES);
+        }
+        when(spellbookMeta.getLore()).thenReturn(loreList);
+        when(spellbookMeta.getDisplayName()).thenReturn(spellName);
+
+        //Try to charge the book with a spell that doesn't already exist on it.
+        String[] args = new String[]{
+                spellNames[Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK],
+                "1"
+        };
+
+        verify(player).sendMessage("That book is already full of spells!");
     }
 
     public void chargeSpellbook(Player player, String[] args){
