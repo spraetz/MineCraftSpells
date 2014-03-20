@@ -120,7 +120,7 @@ public class ChargeSpellbookTest extends BaseTest{
     @Test
     public void testChargeNewSpellbook(){
 
-        String spellName = (String) config.getConfigurationSection("spells").getKeys(false).toArray()[0];
+        String spellName = getAnySpellName();
 
         when(spellbookMeta.getLore()).thenReturn(null);
         when(spellbookMeta.getDisplayName()).thenReturn("BOOK");
@@ -189,7 +189,22 @@ public class ChargeSpellbookTest extends BaseTest{
 
     @Test
     public void testChargeSpellbookNoReagents(){
+        String spellName = getAnySpellName();
 
+        when(spellbookMeta.getLore()).thenReturn(new ArrayList<String>());
+
+        //Mock inventory contents
+        ItemStack[] items = getReagentsForInventory(spellName, 0, plugin);
+        when(playerInventory.getContents()).thenReturn(items);
+
+        String[] args = new String[]{
+                spellName,
+                "1"
+        };
+
+        chargeSpellbook(player, args);
+
+        verify(player).sendMessage("You can't charge that spellbook right now.  Is it full or are you missing reagents");
     }
 
     public void chargeSpellbook(Player player, String[] args){
@@ -205,5 +220,9 @@ public class ChargeSpellbookTest extends BaseTest{
             item.setAmount(item.getAmount() * chargesToAdd);
         }
         return items;
+    }
+
+    public String getAnySpellName(){
+        return (String) config.getConfigurationSection("spells").getKeys(false).toArray()[0];
     }
 }
