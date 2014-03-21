@@ -41,31 +41,31 @@ public class CastSpellTest extends BaseTest{
     @Test
     public void testCastSpell(){
 
+        //Mock the analytics
+        Analytics analytics = PowerMockito.mock(Analytics.class);
+        doNothing().when(analytics).trackSpellCast(any(Player.class), anyString());
+        when(plugin.getAnalytics()).thenReturn(analytics);
+
+        //Mock the damn fireball
+        Fireball fireball = PowerMockito.mock(Fireball.class);
+        WitherSkull witherSkull = PowerMockito.mock(WitherSkull.class);
+
+        //Mock a target block
+        Block block = PowerMockito.mock(Block.class);
+
+        //Mock the world
+        when(world.spawn(any(Location.class), eq(Fireball.class))).thenReturn(fireball);
+        when(world.spawn(any(Location.class), eq(WitherSkull.class))).thenReturn(witherSkull);
+        when(world.getBlockAt(anyInt(), anyInt(), anyInt())).thenReturn(block);
+        when(world.getSpawnLocation()).thenReturn(new Location(world, 0, 0, 0));
+
+        when(block.getLocation()).thenReturn(new Location(world, 0, 0, 0));
+        when(block.getType()).thenReturn(Material.STONE);
+
         //Find the list of all the spells:
         Set<String> spells = config.getConfigurationSection("spells").getKeys(false);
 
         for(String spellName : spells){
-
-            //Mock the analytics
-            Analytics analytics = PowerMockito.mock(Analytics.class);
-            doNothing().when(analytics).trackSpellCast(any(Player.class), anyString());
-            when(plugin.getAnalytics()).thenReturn(analytics);
-
-            //Mock the damn fireball
-            Fireball fireball = PowerMockito.mock(Fireball.class);
-            WitherSkull witherSkull = PowerMockito.mock(WitherSkull.class);
-
-            //Mock a target block
-            Block block = PowerMockito.mock(Block.class);
-
-            //Mock the world
-            when(world.spawn(any(Location.class), eq(Fireball.class))).thenReturn(fireball);
-            when(world.spawn(any(Location.class), eq(WitherSkull.class))).thenReturn(witherSkull);
-            when(world.getBlockAt(anyInt(), anyInt(), anyInt())).thenReturn(block);
-            when(world.getSpawnLocation()).thenReturn(new Location(world, 0, 0, 0));
-
-            when(block.getLocation()).thenReturn(new Location(world, 0, 0, 0));
-            when(block.getType()).thenReturn(Material.STONE);
 
             //Mock item meta for spellbook
             when(spellbookMeta.getDisplayName()).thenReturn(spellName);
