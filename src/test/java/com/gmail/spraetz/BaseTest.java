@@ -71,6 +71,8 @@ public abstract class BaseTest {
         when(player.getInventory()).thenReturn(playerInventory);
         when(spellbook.getItemMeta()).thenReturn(spellbookMeta);
         when(spellbook.getType()).thenReturn(Material.BOOK);
+        when(spellbookMeta.getLore()).thenReturn(null);
+        when(spellbookMeta.getDisplayName()).thenReturn("BOOK");
 
     }
 }

@@ -23,8 +23,7 @@ public class ChargeSpellbook implements CommandExecutor {
 
     /*
         Command: chargeSpellbook
-        Requirements: Must be holding a book in hand.  If that book is already charged,
-            you must be adding the same type of spell.
+        Requirements: Must be holding a book in hand.
         args:
             spellName - String, name of spell
             charges - Integer, optional number of charges to add to the spellbook.

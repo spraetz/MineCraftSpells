@@ -34,7 +34,7 @@ public class ChargeSpellbookTest extends BaseTest{
         Integer EXISTING_CHARGES = 10;
 
         //Find the list of all the spells:
-        Set<String> spells = config.getConfigurationSection("spells").getKeys(false);
+        String[] spells = getAllSpellNames();
 
         for(String spellName : spells){
 
@@ -122,9 +122,6 @@ public class ChargeSpellbookTest extends BaseTest{
 
         String spellName = getAnySpellName();
 
-        when(spellbookMeta.getLore()).thenReturn(null);
-        when(spellbookMeta.getDisplayName()).thenReturn("BOOK");
-
         //Mock inventory contents
         ItemStack[] items = getReagentsForInventory(spellName, 1, plugin);
         when(playerInventory.getContents()).thenReturn(items);
@@ -145,11 +142,7 @@ public class ChargeSpellbookTest extends BaseTest{
     @Test
     public void testRechargeSpellbook(){
 
-        Object[] objectArray = config.getConfigurationSection("spells").getKeys(false).toArray();
-        String[] spellNames =  Arrays.asList(objectArray).toArray(new String[objectArray.length]);
-
-        //Get a spell name.
-        String spellName = spellNames[0];
+        String[] spellNames =  getAllSpellNames();
 
         //Create a full spellbook.
         ArrayList<String> loreList = new ArrayList<String>();
@@ -157,7 +150,7 @@ public class ChargeSpellbookTest extends BaseTest{
             loreList.add(spellNames[i] + Spellbook.LORE_STRING_SEPARATOR + "0");
         }
         when(spellbookMeta.getLore()).thenReturn(loreList);
-        when(spellbookMeta.getDisplayName()).thenReturn(spellName);
+        when(spellbookMeta.getDisplayName()).thenReturn(spellNames[0]);
 
         //Recharge each spell on the book
         for(int i = 0; i < Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK; i++){
@@ -224,5 +217,10 @@ public class ChargeSpellbookTest extends BaseTest{
 
     public String getAnySpellName(){
         return (String) config.getConfigurationSection("spells").getKeys(false).toArray()[0];
+    }
+
+    public String[] getAllSpellNames(){
+        Object[] objectArray = config.getConfigurationSection("spells").getKeys(false).toArray();
+        return Arrays.asList(objectArray).toArray(new String[objectArray.length]);
     }
 }
