@@ -12,10 +12,31 @@ import org.bukkit.util.Vector;
  */
 public class Effects {
 
+    boolean useEffects = true;
+    final MineCraftSpells plugin;
+
+    public Effects(MineCraftSpells plugin){
+        this.plugin = plugin;
+
+        try{
+            Class.forName("com.comphenix.protocol.ProtocolLibrary");
+        }
+        catch(Exception e){
+            plugin.getLogger().warning("***************************************************************************");
+            plugin.getLogger().warning("*** Could not find ProtocolLib, your spells won't have special effects! ***");
+            plugin.getLogger().warning("***************************************************************************");
+            useEffects = false;
+        }
+    }
+
     public static Integer BROADCAST_RADIUS = 32;
 
     public void playVisual(MineCraftSpells plugin, Location location, String name, float spreadHoriz, float spreadVert,
                            float speed, int count, float yOffset) {
+
+        if(!useEffects){
+            return;
+        }
 
         WrapperPlayServerWorldParticles packet = new WrapperPlayServerWorldParticles();
         packet.setParticleEffect(WrapperPlayServerWorldParticles.ParticleEffect.fromName(name));
@@ -28,6 +49,11 @@ public class Effects {
     }
 
     public void playSound(MineCraftSpells plugin, Location location, String name) {
+
+        if(!useEffects){
+            return;
+        }
+
         WrapperPlayServerNamedSoundEffect packet = new WrapperPlayServerNamedSoundEffect();
         packet.setSoundName(name);
         packet.setVolume(1.0F);

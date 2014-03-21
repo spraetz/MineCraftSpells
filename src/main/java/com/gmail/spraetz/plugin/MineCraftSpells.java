@@ -46,7 +46,7 @@ public class MineCraftSpells extends JavaPlugin{
 
     @Override
     public void onLoad(){
-        setEffects(new Effects());
+        setEffects(new Effects(this));
     }
 
     public void registerCommands(){
