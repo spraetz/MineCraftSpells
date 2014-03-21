@@ -48,12 +48,7 @@ public class ChargeSpellbookTest extends BaseTest{
             ItemStack[] items = getReagentsForInventory(spellName, CHARGES_TO_ADD, plugin);
             when(playerInventory.getContents()).thenReturn(items);
 
-            String[] args = new String[]{
-                spellName,
-                CHARGES_TO_ADD.toString()
-            };
-
-            chargeSpellbook(player, args);
+            chargeSpellbook(player, getChargeArgs(spellName, CHARGES_TO_ADD));
 
             //Verify it didn't error
             verify(player, never()).sendMessage(anyString());
@@ -79,12 +74,7 @@ public class ChargeSpellbookTest extends BaseTest{
         ItemStack[] items = getReagentsForInventory(spellName, 1, plugin);
         when(playerInventory.getContents()).thenReturn(items);
 
-        String[] args = new String[]{
-            spellName,
-            "1"
-        };
-
-        chargeSpellbook(player, args);
+        chargeSpellbook(player, getChargeArgs(spellName, 1));
 
         verify(player).sendMessage("You can't charge that spellbook right now.  Is it full or are you missing reagents");
     }
@@ -107,12 +97,7 @@ public class ChargeSpellbookTest extends BaseTest{
         when(spellbookMeta.getDisplayName()).thenReturn(spellName);
 
         //Try to charge the book with a spell that doesn't already exist on it.
-        String[] args = new String[]{
-                spellNames[Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK],
-                "1"
-        };
-
-        chargeSpellbook(player, args);
+        chargeSpellbook(player, getChargeArgs(spellNames[Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK], 1));
 
         verify(player).sendMessage("That book is already full of spells!");
     }
@@ -126,12 +111,7 @@ public class ChargeSpellbookTest extends BaseTest{
         ItemStack[] items = getReagentsForInventory(spellName, 1, plugin);
         when(playerInventory.getContents()).thenReturn(items);
 
-        String[] args = new String[]{
-                spellName,
-                "1"
-        };
-
-        chargeSpellbook(player, args);
+        chargeSpellbook(player, getChargeArgs(spellName, 1));
 
         ArrayList<String> newLore = new ArrayList<String>();
         newLore.add(spellName + Spellbook.LORE_STRING_SEPARATOR + "1");
@@ -159,12 +139,7 @@ public class ChargeSpellbookTest extends BaseTest{
             ItemStack[] items = getReagentsForInventory(spellNames[i], 1, plugin);
             when(playerInventory.getContents()).thenReturn(items);
 
-            String[] args = new String[]{
-                    spellNames[i],
-                    "1"
-            };
-
-            chargeSpellbook(player, args);
+            chargeSpellbook(player, getChargeArgs(spellNames[i], 1));
 
             ArrayList<String> newLore = new ArrayList<String>();
             for(int j = 0; j < Spellbook.MAX_NUMBER_OF_SPELLS_PER_BOOK; j++){
@@ -190,12 +165,7 @@ public class ChargeSpellbookTest extends BaseTest{
         ItemStack[] items = getReagentsForInventory(spellName, 0, plugin);
         when(playerInventory.getContents()).thenReturn(items);
 
-        String[] args = new String[]{
-                spellName,
-                "1"
-        };
-
-        chargeSpellbook(player, args);
+        chargeSpellbook(player, getChargeArgs(spellName, 1));
 
         verify(player).sendMessage("You can't charge that spellbook right now.  Is it full or are you missing reagents");
     }
@@ -222,5 +192,12 @@ public class ChargeSpellbookTest extends BaseTest{
     public String[] getAllSpellNames(){
         Object[] objectArray = config.getConfigurationSection("spells").getKeys(false).toArray();
         return Arrays.asList(objectArray).toArray(new String[objectArray.length]);
+    }
+
+    public String[] getChargeArgs(String spellName, Integer charges){
+        return new String[]{
+                spellName,
+                charges.toString()
+        };
     }
 }
