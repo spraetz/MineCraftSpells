@@ -95,3 +95,12 @@ spells:
       knockback: 2.0
       up_force: 0.5
       max_up_force: 1.0
+  ignite:
+    class: com.gmail.spraetz.spells.Ignite
+    reagents:
+      - reagent: FLINT
+        quantity: 1
+      - reagent: COAL
+        quantity: 1
+    settings:
+      fire_ticks: 100
