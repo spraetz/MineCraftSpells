@@ -13,7 +13,7 @@ spells:
       - reagent: WHEAT
         quantity: 1
     settings:
-      radius: 2
+      radius: 3
       damage_multiplier: 1
   fire_ball:
     class: com.gmail.spraetz.spells.FireBall
@@ -103,4 +103,4 @@ spells:
       - reagent: COAL
         quantity: 1
     settings:
-      fire_ticks: 100
+      fire_ticks: 150

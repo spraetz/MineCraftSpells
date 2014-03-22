@@ -5,23 +5,28 @@ main: com.gmail.spraetz.plugin.MineCraftSpells
 commands:
   charge:
     description: Imbues a book with magic powers
-    usage: /<command> spell [charges]
+    usage: /<command> spell_name [charges]
+    permission: player
+    permission-message: You don't have <permission>
+  spells:
+    description: Lists all spells and their required components
+    usage: /<command>
     permission: player
     permission-message: You don't have <permission>
   particle:
     description: Used to test particle effects
     usage: /<command> effectName
-    permission: player
+    permission: op
     permission-message: You don't have <permission>
   sound:
     description: Used to test sound effects
     usage: /<command> effectName
-    permission: player
+    permission: op
     permission-message: You don't have <permission>
   launch:
     description: Used to test launch effects
     usage: /<command> projectile
-    permission: player
+    permission: op
     permission-message: You don't have <permission>
 
 permissions:
