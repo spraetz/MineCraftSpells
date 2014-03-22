@@ -17,17 +17,17 @@ public class Analytics {
 
     public Analytics(MineCraftSpells plugin){
         this.plugin = plugin;
-        Boolean can_track = this.plugin.getConfig().getBoolean("keen.allow_tracking");
-        String projectId = this.plugin.getConfig().getString("keen.project_id");
-        String writeKey = this.plugin.getConfig().getString("keen.write_key");
+        Boolean can_track = this.plugin.getConfig().getBoolean("allow_tracking");
+        String projectId = "530a932c36bf5a2d23000000";
+        String writeKey = "ed91795fd2a7e88c5de09a31c982edf3c242b90cbdce6f5e375ec3200d1ee75d0efeba6597a277d51579dde3a61ceafc2a9e902925c18f6d9a410c4db78f388dcc2518f4ba48f9789ae5fea7f0ba2cce8f3b8999a8965d7f7148383d0184a497be09369d8cb6da315e3cd2ad01cc93fb";
 
-
-        if(can_track && projectId != null && writeKey != null){
+        if(can_track){
             KeenClient.initialize(projectId, writeKey, null);
             client = KeenClient.client();
             plugin.getLogger().info("Logging analytics data to Keen IO Project: " + projectId);
         }
         else{
+            System.out.println("what");
             client = null;
         }
     }

@@ -19,7 +19,7 @@ public class Ignite extends TouchSpell {
         if(event.getEntity() instanceof Damageable){
 
             //Set the target on fire.
-            event.getEntity().setFireTicks(getSetting(spellName, "fire_ticks", Integer.class));
+            event.getEntity().setFireTicks(getSetting(spellName, "ticks", Integer.class));
 
             return true;
         }

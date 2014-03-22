@@ -1,7 +1,5 @@
 package com.gmail.spraetz.plugin;
 
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
 import com.gmail.spraetz.commands.*;
 import com.gmail.spraetz.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;

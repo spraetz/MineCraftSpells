@@ -1,8 +1,5 @@
 # Default config.yml for Engine
-keen:
-  allow_tracking: true
-  project_id: 530a932c36bf5a2d23000000
-  write_key: ed91795fd2a7e88c5de09a31c982edf3c242b90cbdce6f5e375ec3200d1ee75d0efeba6597a277d51579dde3a61ceafc2a9e902925c18f6d9a410c4db78f388dcc2518f4ba48f9789ae5fea7f0ba2cce8f3b8999a8965d7f7148383d0184a497be09369d8cb6da315e3cd2ad01cc93fb
+allow_tracking: true
 
 spells:
   explosion:
@@ -98,9 +95,15 @@ spells:
   ignite:
     class: com.gmail.spraetz.spells.Ignite
     reagents:
-      - reagent: FLINT
-        quantity: 1
       - reagent: COAL
-        quantity: 1
+        quantity: 2
     settings:
-      fire_ticks: 150
+      ticks: 150
+  poison:
+    class: com.gmail.spraetz.spells.Poison
+    reagents:
+      - reagent: NETHER_STALK
+        quantity: 2
+    settings:
+      ticks: 300
+      amplifier: 1
