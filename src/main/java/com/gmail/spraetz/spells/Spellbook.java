@@ -118,7 +118,7 @@ public class Spellbook {
 
     public static boolean isSpellbook(ItemStack book, MineCraftSpells plugin){
         ItemMeta itemMeta = book.getItemMeta();
-        return spellExists(itemMeta.getDisplayName(), plugin);
+        return itemMeta != null && itemMeta.getDisplayName() != null && spellExists(itemMeta.getDisplayName(), plugin);
     }
 
     public static boolean canCharge(ItemStack book, String spellName){
