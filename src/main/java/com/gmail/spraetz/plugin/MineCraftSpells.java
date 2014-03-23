@@ -47,9 +47,9 @@ public class MineCraftSpells extends JavaPlugin{
     public void registerCommands(){
         getCommand("charge").setExecutor(new ChargeSpellbook(this));
         getCommand("spells").setExecutor(new SpellHelp(this));
-        getCommand("particle").setExecutor(new ParticleTest(this));
-        getCommand("sound").setExecutor(new SoundTest(this));
-        getCommand("launch").setExecutor(new LaunchTest(this));
+        //getCommand("particle").setExecutor(new ParticleTest(this));
+        //getCommand("sound").setExecutor(new SoundTest(this));
+        //getCommand("launch").setExecutor(new LaunchTest(this));
     }
 
     public void registerEventListeners(){
