@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="1.371" errors="0" skipped="0" tests="1" name="com.gmail.spraetz.CastSpellTest">
+<testsuite failures="0" time="1.1" errors="0" skipped="0" tests="1" name="com.gmail.spraetz.CastSpellTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries"/>
@@ -22,7 +22,7 @@
     <property name="basedir" value="/Users/spraetz/dev/MineCraftSpells"/>
     <property name="java.endorsed.dirs" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefirebooter2710143855806875565.jar"/>
+    <property name="surefire.real.class.path" value="/var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefirebooter6005655031256194317.jar"/>
     <property name="java.io.tmpdir" value="/var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/"/>
     <property name="line.separator" value="
 "/>
@@ -34,7 +34,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="50.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.9.1"/>
+    <property name="os.version" value="10.9.2"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="user.home" value="/Users/spraetz"/>
     <property name="user.timezone" value=""/>
@@ -46,7 +46,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"/>
-    <property name="sun.java.command" value="/var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefirebooter2710143855806875565.jar /var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefire4172807604823304903tmp /var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefire1643596510686232678tmp"/>
+    <property name="sun.java.command" value="/var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefirebooter6005655031256194317.jar /var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefire7366257897445088780tmp /var/folders/j0/jbh3hw_x671gvlwghd7bt25r0000gn/T/surefire3874429939969006972tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="apple.awt.CToolkit"/>
@@ -65,5 +65,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.583" classname="com.gmail.spraetz.CastSpellTest" name="testCastSpell"/>
+  <testcase time="0.535" classname="com.gmail.spraetz.CastSpellTest" name="testCastSpell"/>
 </testsuite>

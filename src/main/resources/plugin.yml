@@ -1,5 +1,5 @@
 name: MineCraftSpells
-version: 2.3
+version: 2.3.1
 main: com.gmail.spraetz.plugin.MineCraftSpells
 
 commands:

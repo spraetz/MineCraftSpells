@@ -6,7 +6,7 @@
 
     <groupId>com.gmail.spraetz</groupId>
     <artifactId>MineCraftSpells</artifactId>
-    <version>2.3</version>
+    <version>2.3.1</version>
 
     <build>
         <plugins>
@@ -52,7 +52,7 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <copy file="/Users/spraetz/dev/MineCraftSpells/target/MineCraftSpells-2.3.jar" tofile="/Users/spraetz/MineCraft/MineCraftSpells/plugins/MineCraftSpells-2.3.jar"/>
+                                <copy file="/Users/spraetz/dev/MineCraftSpells/target/MineCraftSpells-2.3.1.jar" tofile="/Users/spraetz/MineCraft/MineCraftSpells/plugins/MineCraftSpells-2.3.1.jar"/>
                             </tasks>
                         </configuration>
                         <goals>

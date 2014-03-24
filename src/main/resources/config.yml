@@ -1,6 +1,4 @@
 # Default config.yml for Engine
-allow_tracking: true
-
 spells:
   explosion:
     class: com.gmail.spraetz.spells.Explosion
@@ -107,3 +105,5 @@ spells:
     settings:
       ticks: 300
       amplifier: 1
+
+allow_tracking: true
