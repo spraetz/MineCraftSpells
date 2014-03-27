@@ -105,6 +105,13 @@ spells:
     settings:
       ticks: 300
       amplifier: 1
+  restore:
+    class: com.gmail.spraetz.spells.Restore
+    reagents:
+      -  reagent: WHEAT
+         quantity: 1
+      -  reagent: WOOL
+         quantity: 1
 
 allow_tracking: true
 auto_update: true

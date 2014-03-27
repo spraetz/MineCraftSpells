@@ -46,6 +46,9 @@ public class MineCraftSpells extends JavaPlugin{
 
         //Register Event Listeners
         registerEventListeners();
+
+        //Log the enable
+        analytics.trackPluginEnable();
     }
 
     @Override
@@ -72,12 +75,12 @@ public class MineCraftSpells extends JavaPlugin{
     public void setupConfig(){
         //Look for a config.yml file in the plugins folder.
         getConfig().options().copyDefaults(true);
+        saveDefaultConfig();
 
-        //If we don't have a guid yet, set one.
+
         if(getConfig().getString("guid") == null){
             getConfig().set("guid", UUID.randomUUID().toString());
+            saveConfig();
         }
-
-        saveDefaultConfig();
     }
 }

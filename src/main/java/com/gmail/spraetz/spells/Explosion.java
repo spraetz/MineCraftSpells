@@ -20,7 +20,7 @@ public class Explosion extends Spell{
     public Boolean spellEffects(PlayerInteractEvent e, String spellName){
 
         //Spawn a new fireball at the next tick at the player's current location.
-        WitherSkull explosion = player.getWorld().spawn(player.getEyeLocation(), WitherSkull.class);
+        Fireball explosion = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
 
         //Explosions have no fire.
         explosion.setIsIncendiary(false);

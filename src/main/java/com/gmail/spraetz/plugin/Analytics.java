@@ -27,7 +27,6 @@ public class Analytics {
             plugin.getLogger().info("Logging analytics data to Keen IO Project: " + projectId);
         }
         else{
-            System.out.println("what");
             client = null;
         }
     }
@@ -65,10 +64,15 @@ public class Analytics {
         track("charge_spellbook", properties);
     }
 
+    public void trackPluginEnable(){
+        HashMap<String, Object> properties = new HashMap<String, Object>();
+        track("plugin_enabled", properties);
+    }
+
     private void track(String eventName, Map<String, Object> properties){
         if(client != null){
             try {
-                properties.put("server_id", plugin.getServer().getServerId());
+                properties.put("server_id", plugin.getConfig().getString("guid"));
                 client.addEvent(eventName, properties);
             } catch (KeenException e) {
                 e.printStackTrace();
