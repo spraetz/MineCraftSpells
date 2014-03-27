@@ -51,14 +51,14 @@ public class Analytics {
 
         properties.put("player", getPlayerProperties(player));
 
+        properties.put("success", success);
+
+        // if it was a successful charge, record it as such.
         if(success){
             properties.put("spell", getSpellProperties(spellName));
             properties.put("charges", chargesToAdd);
         }
-
-        properties.put("success", success);
-
-        if(!success){
+        else{
             properties.put("error_message", error);
         }
 

@@ -1,5 +1,6 @@
 package com.gmail.spraetz;
 
+import com.gmail.spraetz.plugin.Analytics;
 import com.gmail.spraetz.plugin.Effects;
 import com.gmail.spraetz.plugin.MineCraftSpells;
 import org.bukkit.Material;
@@ -30,6 +31,7 @@ public abstract class BaseTest {
 
     protected static FileConfiguration config;
     protected MineCraftSpells plugin;
+    protected Analytics analytics;
     protected Effects effects;
     protected World world;
     protected ItemStack spellbook;
@@ -55,11 +57,13 @@ public abstract class BaseTest {
         when(server.getScheduler()).thenReturn(scheduler);
 
         effects = PowerMockito.mock(Effects.class);
+        analytics = PowerMockito.mock(Analytics.class);
 
         plugin = PowerMockito.mock(MineCraftSpells.class);
         when(plugin.getConfig()).thenReturn(config);
         when(plugin.getServer()).thenReturn(server);
         when(plugin.getEffects()).thenReturn(effects);
+        when(plugin.getAnalytics()).thenReturn(analytics);
 
         world = PowerMockito.mock(World.class);
         spellbook = PowerMockito.mock(ItemStack.class);

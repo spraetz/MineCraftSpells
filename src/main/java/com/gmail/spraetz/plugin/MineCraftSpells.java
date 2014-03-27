@@ -4,6 +4,8 @@ import com.gmail.spraetz.commands.*;
 import com.gmail.spraetz.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.UUID;
+
 /**
  * Created by spraetz on 2/16/14.
  */
@@ -26,6 +28,13 @@ public class MineCraftSpells extends JavaPlugin{
 
     @Override
     public void onEnable() {
+
+        if (this.getConfig().getBoolean("auto-update"))
+        {
+            @SuppressWarnings("unused")
+            Updater updater = new Updater(this, 75077, this.getFile(), Updater.UpdateType.DEFAULT, true);
+        }
+
         //Set up the config
         setupConfig();
 
@@ -63,6 +72,12 @@ public class MineCraftSpells extends JavaPlugin{
     public void setupConfig(){
         //Look for a config.yml file in the plugins folder.
         getConfig().options().copyDefaults(true);
+
+        //If we don't have a guid yet, set one.
+        if(getConfig().getString("guid") == null){
+            getConfig().set("guid", UUID.randomUUID().toString());
+        }
+
         saveDefaultConfig();
     }
 }

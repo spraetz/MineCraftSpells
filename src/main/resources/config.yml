@@ -107,3 +107,5 @@ spells:
       amplifier: 1
 
 allow_tracking: true
+auto_update: true
+guid: null
