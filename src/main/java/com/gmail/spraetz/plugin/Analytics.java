@@ -35,20 +35,34 @@ public class Analytics {
     public void trackSpellCast(Player p, String spellName){
         HashMap<String, Object> properties = new HashMap<String, Object>();
 
-        //Build player HashMap
-        HashMap<String, Object> playerProperties = new HashMap<String, Object>();
-        playerProperties.put("name", p.getName().toLowerCase());
+        properties.put("player", getPlayerProperties(p));
 
-        properties.put("player", playerProperties);
-
-        //Build spell HashMap
-        HashMap<String, Object> spellProperties = new HashMap<String, Object>();
-        spellProperties.put("name", spellName.toLowerCase());
-        spellProperties.put("class", plugin.getConfig().getString("spells." + spellName + ".class"));
-
-        properties.put("spell", spellProperties);
+        properties.put("spell", getSpellProperties(spellName));
 
         track("spell_casts", properties);
+    }
+
+    public void trackCharge(Player player, String spellName, Integer chargesToAdd){
+        trackCharge(player, spellName, chargesToAdd, true, null);
+    }
+
+    public void trackCharge(Player player, String spellName, Integer chargesToAdd, Boolean success, String error){
+        HashMap<String, Object> properties = new HashMap<String, Object>();
+
+        properties.put("player", getPlayerProperties(player));
+
+        if(success){
+            properties.put("spell", getSpellProperties(spellName));
+            properties.put("charges", chargesToAdd);
+        }
+
+        properties.put("success", success);
+
+        if(!success){
+            properties.put("error_message", error);
+        }
+
+        track("charge_spellbook", properties);
     }
 
     private void track(String eventName, Map<String, Object> properties){
@@ -60,5 +74,22 @@ public class Analytics {
                 e.printStackTrace();
             }
         }
+    }
+
+    public HashMap<String, Object> getPlayerProperties(Player player){
+        //Build player HashMap
+        HashMap<String, Object> playerProperties = new HashMap<String, Object>();
+        playerProperties.put("name", player.getName().toLowerCase());
+
+        return playerProperties;
+    }
+
+    public HashMap<String, Object> getSpellProperties(String spellName){
+
+        HashMap<String, Object> spellProperties = new HashMap<String, Object>();
+        spellProperties.put("name", spellName.toLowerCase());
+        spellProperties.put("class", plugin.getConfig().getString("spells." + spellName + ".class"));
+
+        return spellProperties;
     }
 }

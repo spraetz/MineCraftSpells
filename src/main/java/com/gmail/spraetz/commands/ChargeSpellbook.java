@@ -63,14 +63,19 @@ public class ChargeSpellbook implements CommandExecutor {
             //Add the charges to the book
             Spellbook.addCharges(book, spellName, chargesToAdd);
 
+            //Record the event
+            plugin.getAnalytics().trackCharge(p, spellName, chargesToAdd);
+
             return true;
         }
         catch(ChargeSpellException e){
             p.sendMessage(e.getMessage());
+            plugin.getAnalytics().trackCharge(p, null, null, false, e.getMessage());
             return true;
         }
         catch(CommandException e){
             p.sendMessage(e.getMessage());
+            plugin.getAnalytics().trackCharge(p, null, null, false, e.getMessage());
             return false;
         }
     }
