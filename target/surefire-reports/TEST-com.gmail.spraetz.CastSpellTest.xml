@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="2.681" errors="0" skipped="0" tests="1" name="com.gmail.spraetz.CastSpellTest">
+<testsuite failures="0" time="2.069" errors="0" skipped="0" tests="1" name="com.gmail.spraetz.CastSpellTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib"/>
@@ -20,7 +20,7 @@
     <property name="basedir" value="/Users/spraetz/dev/MineCraftSpells"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefirebooter5812616156641767035.jar"/>
+    <property name="surefire.real.class.path" value="/var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefirebooter8741787849859179176.jar"/>
     <property name="java.io.tmpdir" value="/var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/"/>
     <property name="line.separator" value="
 "/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="/var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefirebooter5812616156641767035.jar /var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefire27368683042387959tmp /var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefire5384264895779576666tmp"/>
+    <property name="sun.java.command" value="/var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefirebooter8741787849859179176.jar /var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefire9107638454879623794tmp /var/folders/wr/nmgyr2_n1ls2cx3z3y7phl4c0000gn/T/surefire4422197644465893282tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -62,5 +62,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="1.165" classname="com.gmail.spraetz.CastSpellTest" name="testCastSpell"/>
+  <testcase time="0.931" classname="com.gmail.spraetz.CastSpellTest" name="testCastSpell"/>
 </testsuite>
