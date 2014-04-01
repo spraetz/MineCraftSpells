@@ -1,6 +1,7 @@
 # Default config.yml for Engine
 spells:
   explosion:
+    description: Launches a projectile that causes a large explosion.
     class: com.gmail.spraetz.spells.Explosion
     reagents:
       - reagent: FLINT
@@ -11,6 +12,7 @@ spells:
       radius: 3
       damage_multiplier: 1
   fire_ball:
+    description: Launches a projectile that ignites nearby things.
     class: com.gmail.spraetz.spells.FireBall
     reagents:
       - reagent: FLINT
@@ -23,6 +25,7 @@ spells:
       ignite_radius: 3
       fire_ticks: 100
   lightning_bolt:
+    description: Causes a bolt of lightning to strike where targeted.
     class: com.gmail.spraetz.spells.LightningBolt
     reagents:
       - reagent: COAL
@@ -30,6 +33,7 @@ spells:
       - reagent: WHEAT
         quantity: 1
   teleport:
+    description: Teleports the player to the targeted location.
     class: com.gmail.spraetz.spells.Teleport
     reagents:
       - reagent: EGG
@@ -37,6 +41,7 @@ spells:
       - reagent: LEATHER
         quantity: 1
   stone_wall:
+    description: Creates a temporary wall made of bedrock where targeted.
     class: com.gmail.spraetz.spells.Wall
     reagents:
       - reagent: WHEAT
@@ -48,6 +53,7 @@ spells:
       minimum_ticks: 80
       maximum_ticks: 120
   heal_self:
+    description: Restores your own hearts.
     class: com.gmail.spraetz.spells.HealSelf
     reagents:
       - reagent: WOOL
@@ -57,6 +63,7 @@ spells:
     settings:
       percent_of_max_health: 30
   heal_other:
+    description: Restores the health of the entity you click.  Must be close enough to touch.
     class: com.gmail.spraetz.spells.HealOther
     reagents:
       - reagent: WOOL
@@ -66,6 +73,7 @@ spells:
     settings:
       percent_of_max_health: 30
   recall:
+    description: Takes the player back to their bed spawn or server spawn if there is none.
     class: com.gmail.spraetz.spells.Recall
     reagents:
       - reagent: EGG
@@ -73,6 +81,7 @@ spells:
       - reagent: WOOL
         quantity: 1
   flight:
+    description: Grants the player the ability to fly temporarily.
     class: com.gmail.spraetz.spells.Flight
     reagents:
       - reagent: FEATHER
@@ -82,6 +91,7 @@ spells:
     settings:
       ticks: 400
   push:
+    description: Knocks an entity way back.  Must be close enough to touch.
     class: com.gmail.spraetz.spells.Push
     reagents:
       - reagent: WHEAT
@@ -91,6 +101,7 @@ spells:
       up_force: 0.5
       max_up_force: 1.0
   ignite:
+    description: Sets an entity on fire.  Must be close enough to touch.
     class: com.gmail.spraetz.spells.Ignite
     reagents:
       - reagent: COAL
@@ -98,6 +109,7 @@ spells:
     settings:
       ticks: 150
   poison:
+    description: Poisons an entity.  Must be close enough to touch.
     class: com.gmail.spraetz.spells.Poison
     reagents:
       - reagent: NETHER_STALK
@@ -106,6 +118,7 @@ spells:
       ticks: 300
       amplifier: 1
   restore:
+    description: Removes all negative effects from yourself.
     class: com.gmail.spraetz.spells.Restore
     reagents:
       -  reagent: WHEAT

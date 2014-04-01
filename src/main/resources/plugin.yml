@@ -1,5 +1,5 @@
 name: MineCraftSpells
-version: 2.4.0
+version: 2.5.0
 main: com.gmail.spraetz.plugin.MineCraftSpells
 
 commands:
@@ -10,7 +10,7 @@ commands:
     permission-message: You don't have <permission>
   spells:
     description: Lists all spells and their required components
-    usage: /<command>
+    usage: /<command> [spell_name]
     permission: player
     permission-message: You don't have <permission>
   particle:
